@@ -14,6 +14,29 @@ You can simply start using it by including it in HTML.
 ```html
 <script src="dropdown.js"></script>
 ```
+You must have a container element to open dropdown menu when container triggered. The container element must have "dropdown" as class, and the dropdown menu itself must have "dropdown-menu" as class. Then you can fill and stylize "dropdown-menu" as you want. Here's the structure:
+
+```html
+<element class="dropdown">
+    <element class="dropdown-menu">
+        ...
+    </element>
+</element>
+```
+Then you can utilitize and stylize the dropdown menu as you want. Like the example below:
+
+```html
+<div class="dropdown fade@0.1s-ease-in secondary-click">
+    <div class="dropdown-menu">
+        <ul>
+            <li>Copy</li>
+            <li>Paste</li>
+            <li>Cut</li>
+            <li>Delete</li>
+        </ul>
+    </div>
+</div>
+```
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
