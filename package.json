@@ -1,0 +1,17 @@
+{
+  "name": "dropdown-easy",
+  "version": "1.0.0",
+  "description": "Dropdown Easy is a multi-purpose JavaScript library to make using dropdown elements in your project much more easier and advanced.",
+  "main": "dropdown.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "dropdown",
+    "menu",
+    "dropdownmenu",
+    "elements"
+  ],
+  "author": "Yusuf Berk Çekiç",
+  "license": "MIT"
+}
