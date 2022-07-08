@@ -5,9 +5,9 @@ Dropdown Easy is a multi-purpose JavaScript library to make using dropdown eleme
 
 You can install it via npm package manager.
 ```npm
-npm install dropdown-easy
+npm install dropdowneasy
 ```
-or via [GitHub](https://github.com/yebece/dropdown-easy/releases/tag/v1.0.0).
+or via [GitHub](https://github.com/yebece/dropdowneasy/releases/tag/v1.0.0).
 
 ## Usage
 You can simply start using it by including it in HTML.
