@@ -11,29 +11,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
-<body class="">
+<body>
+    <div class="header">
+        
+        <img src="dropdown-easy-logo.png" style="width: 32px; height: 32px;">
+        <font><b>dropdown</b>easy
+        Documentation</font>
+    </div>
     <div class="container">
         <div class="chapters">
             <span class="chapter-group-title">Getting Started</span>
             <a href="#installation"><div class="chapter">Installation</div></a>
             <a href="#usage"><div class="chapter">Usage</div></a>
-            <hr/>
             <a href="#utilities"><div class="chapter">Utilities</div></a>
-            <hr />
             <a href="#animations"><span class="chapter-group-title">Animations</span></a>
             <a href="#usage-of-animations-n-types"><div class="chapter">Usage of Animations & Types</div></a>
             
         </div>
         <div class="page">
-<p>    
-    <div style="width: 100%; font-size: 40px;" align="center">
-        <img src="dropdown-easy-logo.png" style="width: 200px; height: 200px;">
-        <br/>
-        <b>dropdown</b>easy
-        <br/>
-        <font style="font-size: 32px">Documentation</font>
-    </div>
-
+<!--
+<pre>
+<code>&lt;<span class="main">div</span> <span class="secondary">class</span>=<span class="value">"lol"</span>&gt;
+&lt;/<span class="main">div</span>&gt;</code>
+</pre>
+-->
+<p>    <br/>
     <h1>Getting Started</h1>
     <h2 id="installation">Installation</h2>
 Including <code>"dropdown.js"</code> file at your html file is enough to use Dropdown Easy at your project.
@@ -127,7 +129,7 @@ You can add menus opening&closing animations. There is 6 types of animations and
 &lt;/<span class="main">element</span>&gt;</code>
 </pre>
 <div class="note">
-    <b>Known Issue:</b> <code>cubic-bezier</code> isn't working right now, will be fixed at next releases.
+    <b>Note:</b> To use <code>cubic-bezier</code> there mustn't be spaces between values.
 </div>
 <br/>
 Default duration value is <code>0.2s</code>, default timing-function is <code>"ease"</code>.
@@ -199,6 +201,45 @@ Transition between 0%-100% opacity and 30px-0px blur.
         scroll-behavior: smooth;
     }
 
+    
+    ::-webkit-scrollbar-track {
+        background: #00000000;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.151);
+        transition: all 0.2s;
+        border-radius: var(--radius-small);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(0, 0, 0, 0.302);
+        transition: all 0.2s;
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+        margin: 5px;
+    }
+
+    .header{
+        width: 100%;
+        height: 50px;
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        padding: 9px;
+        box-sizing: border-box;
+
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        background: #FFFFFF;
+        border-bottom: 1px solid rgba(237, 237, 237, 0.5);
+    }
+
     .container{
         width: 100%;
         height: 100%;
@@ -214,7 +255,7 @@ Transition between 0%-100% opacity and 30px-0px blur.
     }
 
     hr{
-        height: 3px;
+        height: 2px;
         width: 90%;
         margin-left: 5%;
         border: none;
@@ -223,15 +264,18 @@ Transition between 0%-100% opacity and 30px-0px blur.
     }
 
     .chapters{
-        width: 24%;
+        width: 20%;
+        height: 100%;
         padding: 10px;
-        border-radius: 20px;
         position: fixed;
+        top: 50px;
         left: 0;
         box-sizing: border-box;
         display: flex;
+        gap: 4px;
         flex-direction: column;
-        gap: 10px;
+        background: #fff;
+        border-right: 1px solid #F6F6F6;
     }
 
     .context-menu{
@@ -248,27 +292,31 @@ Transition between 0%-100% opacity and 30px-0px blur.
     }
 
     .chapter-group-title{
-        font-size: 1.5rem;
+        font-size: 16px;
         font-weight: bold;
         color: rgba(0, 0, 0, 0.5);
-        margin-left: 18px;
+        margin-left: 14px;
+        padding-top: 6px;
     }
 
     .chapter{
         width: 100%;
-        height: 50px;
+        height: 40px;
         background-color: #fff;
         font-weight: 600;
-        font-size: 16px;
-        padding: 17px;
+        font-size: 12px;
+        line-height: 14px;
+        border-radius: 12px;
+        padding-left: 14px;
         box-sizing: border-box;
-        border-radius: 20px;
+        display: flex;
+        align-items: center;
         cursor: pointer;
         transition: all 0.05s;
     }
 
     .chapter:hover{
-        background-color: #ffffff80;
+        background-color: #EEEEEE;
         transition: all 0.05s;
     }
 
@@ -279,11 +327,11 @@ Transition between 0%-100% opacity and 30px-0px blur.
     }
 
     .page{
-        width: 76%;
+        width: 80%;
         padding: 20px;
-        border-radius: 20px;
+        border-radius: 14px;
         background-color: #fff;
-        box-sizing: border-box;        
+        box-sizing: border-box;
     }
 
     .note{
