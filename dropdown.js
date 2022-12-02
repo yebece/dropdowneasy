@@ -17,7 +17,7 @@ for (var i = 0; i < all0.length; i++) {
 }
 
 var isDropdownEnabled = false; // old name: dropdownEnabled
-var dontDismissAtTapEnabled = false;
+var shouldNotDismissAtTap = false; // old name: dontDismissAtTapEnabled, TODO: invert this variable!
 var dismissWhileScrolling = false;
 var secondaryClickEnabled = false;
 var fixedPosEnabled = false;
@@ -98,7 +98,7 @@ function dismissMenu() {
     }
 
     setTimeout(() => {
-        dontDismissAtTapEnabled = false;
+        shouldNotDismissAtTap = false;
         scalingEnabled = false;
         scalingBouncyEnabled = false;
         scalingBlurEnabled = false;
@@ -117,7 +117,7 @@ function dismissMenu() {
 
 function menumove(event) {
     if (event.target.classList.contains("dont-dismiss-at-tap")) {
-        dontDismissAtTapEnabled = true;
+        shouldNotDismissAtTap = true;
     }
 
     if (event.target.classList.contains("dismiss-while-scrolling")) {
@@ -367,7 +367,7 @@ function menumove(event) {
                 dismissMenu();
             }
 
-        } else if (!dontDismissAtTapEnabled) {
+        } else if (!shouldNotDismissAtTap) {
             dismissMenu();
         } else if (secondaryClickEnabled && event.button == 0 && !nodes.join().includes("dropdown-menu")) {
             dismissMenu();
@@ -394,7 +394,7 @@ function secondaryClick(event) {
 
 function log(event) {
     if (event.target.classList.contains("dropdown") == false && !isDropdownEnabled) {
-        dontDismissAtTapEnabled = false;
+        shouldNotDismissAtTap = false;
         scalingEnabled = false;
         scalingBouncyEnabled = false;
         scalingBlurEnabled = false;
@@ -407,7 +407,7 @@ function log(event) {
 
     console.log(event.target.classList.toString());
     console.log("dropdownEnabled: " + isDropdownEnabled);
-    console.log("dontDismissAtTapEnabled: " + dontDismissAtTapEnabled);
+    console.log("dontDismissAtTapEnabled: " + shouldNotDismissAtTap);
     console.log("scalingEnabled: " + scalingEnabled);
     console.log("scalingBouncyEnabled: " + scalingBouncyEnabled);
     console.log("scalingBlurEnabled: " + scalingBlurEnabled);
