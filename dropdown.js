@@ -18,7 +18,7 @@ for (var i = 0; i < all0.length; i++) {
 
 var dropdownEnabled = false;
 var dontDismissAtTapEnabled = false;
-var dismissWhileScrolling = 0;
+var dismissWhileScrolling = false;
 var secondaryClickEnabled = 0;
 var fixedPosEnabled = 0;
 
@@ -107,7 +107,7 @@ function dismissMenu() {
         fadeBlurEnabled = 0;
         secondaryClickEnabled = 0;
         fixedPosEnabled = 0;
-        dismissWhileScrolling = 0;
+        dismissWhileScrolling = false;
 
         document.getElementById("dropdownn").innerHTML += dropDownMenu.outerHTML;
         dropDownMenu.outerHTML = "";
@@ -120,8 +120,8 @@ function menumove(event) {
         dontDismissAtTapEnabled = true;
     }
 
-    if (event.target.classList.contains("dismiss-while-scrolling") == true) {
-        dismissWhileScrolling = 1;
+    if (event.target.classList.contains("dismiss-while-scrolling")) {
+        dismissWhileScrolling = true;
     }
 
     if (event.target.classList.contains("secondary-click") == true) {
@@ -379,7 +379,7 @@ function menumove(event) {
 }
 
 window.onscroll = function(e) {
-    if (dismissWhileScrolling == 1) {
+    if (dismissWhileScrolling) {
         dismissMenu();
     }
 }
