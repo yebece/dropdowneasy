@@ -25,7 +25,7 @@ var fixedPosEnabled = false;
 var scalingEnabled = false;
 var scalingBouncyEnabled = false;
 var scalingBlurEnabled = false;
-var scalingFadeEnabled = 0;
+var scalingFadeEnabled = false;
 var fadeEnabled = 0;
 var fadeBlurEnabled = 0;
 
@@ -71,7 +71,7 @@ function dismissMenu() {
             dropDownMenu.style.transform = "scale(0)";
         }, fadeBlurDuration * 1000);
 
-    } else if (scalingFadeEnabled == 1) {
+    } else if (scalingFadeEnabled) {
         dismissDuration = scalingFadeDuration;
         dropDownMenu.style.opacity = "0%";
         dropDownMenu.style.transform = "scale(0)";
@@ -102,7 +102,7 @@ function dismissMenu() {
         scalingEnabled = false;
         scalingBouncyEnabled = false;
         scalingBlurEnabled = false;
-        scalingFadeEnabled = 0;
+        scalingFadeEnabled = false;
         fadeEnabled = 0;
         fadeBlurEnabled = 0;
         secondaryClickEnabled = false;
@@ -175,7 +175,7 @@ function menumove(event) {
     }
 
     if (event.target.classList.toString().indexOf("scaling-fade") > -1) {
-        scalingFadeEnabled = 1;
+        scalingFadeEnabled = true;
 
         if(event.target.classList.toString().indexOf("@") > -1){
             var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
@@ -291,7 +291,7 @@ function menumove(event) {
                     dropDownMenu.style.filter = "blur(0px)";
                 }, 0.1);
 
-            } else if (scalingFadeEnabled == 1) {
+            } else if (scalingFadeEnabled) {
                 dropDownMenu.style.filter = "blur(0px)";
                 dropDownMenu.style.transition = "opacity " + scalingFadeDuration + "s " + scalingFadeCurveType + ", transform " + scalingFadeDuration + "s " + scalingFadeCurveType;
 
@@ -398,7 +398,7 @@ function log(event) {
         scalingEnabled = false;
         scalingBouncyEnabled = false;
         scalingBlurEnabled = false;
-        scalingFadeEnabled = 0;
+        scalingFadeEnabled = false;
         fadeEnabled = 0;
         fadeBlurEnabled = 0;
         secondaryClickEnabled = false;
