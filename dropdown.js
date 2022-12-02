@@ -20,7 +20,7 @@ var dropdownEnabled = false;
 var dontDismissAtTapEnabled = false;
 var dismissWhileScrolling = false;
 var secondaryClickEnabled = false;
-var fixedPosEnabled = 0;
+var fixedPosEnabled = false;
 
 var scalingEnabled = 0;
 var scalingBouncyEnabled = 0;
@@ -106,7 +106,7 @@ function dismissMenu() {
         fadeEnabled = 0;
         fadeBlurEnabled = 0;
         secondaryClickEnabled = false;
-        fixedPosEnabled = 0;
+        fixedPosEnabled = false;
         dismissWhileScrolling = false;
 
         document.getElementById("dropdownn").innerHTML += dropDownMenu.outerHTML;
@@ -128,8 +128,8 @@ function menumove(event) {
         secondaryClickEnabled = true;
     }
 
-    if (event.target.classList.contains("fixed-pos") == true) {
-        fixedPosEnabled = 1;
+    if (event.target.classList.contains("fixed-pos")) {
+        fixedPosEnabled = true;
     }
 
     // Animations
@@ -227,7 +227,7 @@ function menumove(event) {
                 dropDownMenu.classList.add("secondary-click");
             }
 
-            if (fixedPosEnabled == 1) {
+            if (fixedPosEnabled) {
                 dropDownMenu.style.position = "fixed";
             }
 
@@ -235,7 +235,7 @@ function menumove(event) {
                 var posX = event.pageX;
                 var posY = event.pageY;
 
-                if (fixedPosEnabled == 1) {
+                if (fixedPosEnabled) {
                     posX = event.clientX;
                     posY = event.clientY;
                 }
@@ -402,7 +402,7 @@ function log(event) {
         fadeEnabled = 0;
         fadeBlurEnabled = 0;
         secondaryClickEnabled = false;
-        fixedPosEnabled = 0;
+        fixedPosEnabled = false;
     }
 
     console.log(event.target.classList.toString());
