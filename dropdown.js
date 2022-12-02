@@ -27,7 +27,7 @@ var isScalingBounceEnabled = false; // old name: scalingBouncyEnabled
 var isScalingBlurEnabled = false; // old name: scalingBlurEnabled
 var isScalingFadeEnabled = false; // old name: scalingFadeEnabled
 var isFadingEnabled = false; // old name: fadeEnabled
-var fadeBlurEnabled = false;
+var isFadingBlurEnabled = false; // old name: fadeBlurEnabled
 
 var scalingDuration = 0.2;
 var scalingBouncyDuration = 0.2;
@@ -63,7 +63,7 @@ function dismissMenu() {
         dismissDuration = scalingBouncyDuration;
         dropDownMenu.style.transform = "scale(0)";
 
-    } else if (fadeBlurEnabled) {
+    } else if (isFadingBlurEnabled) {
         dismissDuration = fadeBlurDuration;
         dropDownMenu.style.opacity = "0%";
         dropDownMenu.style.filter = "blur(30px)";
@@ -104,7 +104,7 @@ function dismissMenu() {
         isScalingBlurEnabled = false;
         isScalingFadeEnabled = false;
         isFadingEnabled = false;
-        fadeBlurEnabled = false;
+        isFadingBlurEnabled = false;
         isSecondaryClickEnabled = false;
         isFixedPositioningEnabled = false;
         shouldDismissWhileScrolling = false;
@@ -201,7 +201,7 @@ function menumove(event) {
     }
 
     if (event.target.classList.toString().indexOf("fade-blur") > -1) {
-        fadeBlurEnabled = true;
+        isFadingBlurEnabled = true;
 
         if(event.target.classList.toString().indexOf("@") > -1){
             var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
@@ -311,7 +311,7 @@ function menumove(event) {
                     dropDownMenu.style.transform = "scale(1)";
                 }, 0.1);
 
-            } else if (fadeBlurEnabled) {
+            } else if (isFadingBlurEnabled) {
                 dropDownMenu.style.transform = "scale(1)";
                 dropDownMenu.style.transition = "filter " + fadeBlurDuration + "s " + fadeBlurCurveType + ", opacity " + fadeBlurDuration + "s " + fadeBlurCurveType;
 
@@ -400,7 +400,7 @@ function log(event) {
         isScalingBlurEnabled = false;
         isScalingFadeEnabled = false;
         isFadingEnabled = false;
-        fadeBlurEnabled = false;
+        isFadingBlurEnabled = false;
         isSecondaryClickEnabled = false;
         isFixedPositioningEnabled = false;
     }
@@ -413,7 +413,7 @@ function log(event) {
     console.log("scalingBlurEnabled: " + isScalingBlurEnabled);
     console.log("scalingFadeEnabled: " + isScalingFadeEnabled);
     console.log("fadeEnabled: " + isFadingEnabled);
-    console.log("fadeBlurEnabled: " + fadeBlurEnabled);
+    console.log("fadeBlurEnabled: " + isFadingBlurEnabled);
     console.log("secondaryClickEnabled: " + isSecondaryClickEnabled);
     console.log("fixedPosEnabled: " + isFixedPositioningEnabled);
 }
