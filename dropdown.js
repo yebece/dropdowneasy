@@ -20,7 +20,7 @@ var isDropdownEnabled = false; // old name: dropdownEnabled
 var shouldNotDismissAtTap = false; // old name: dontDismissAtTapEnabled, TODO: invert this variable!
 var shouldDismissWhileScrolling = false; // old name: dismissWhileScrolling
 var isSecondaryClickEnabled = false; // old name: secondaryClickEnabled
-var fixedPosEnabled = false;
+var isFixedPositioningEnabled = false; // old name: fixedPosEnabled
 
 var scalingEnabled = false;
 var scalingBouncyEnabled = false;
@@ -106,7 +106,7 @@ function dismissMenu() {
         fadeEnabled = false;
         fadeBlurEnabled = false;
         isSecondaryClickEnabled = false;
-        fixedPosEnabled = false;
+        isFixedPositioningEnabled = false;
         shouldDismissWhileScrolling = false;
 
         document.getElementById("dropdownn").innerHTML += dropDownMenu.outerHTML;
@@ -129,7 +129,7 @@ function menumove(event) {
     }
 
     if (event.target.classList.contains("fixed-pos")) {
-        fixedPosEnabled = true;
+        isFixedPositioningEnabled = true;
     }
 
     // Animations
@@ -227,7 +227,7 @@ function menumove(event) {
                 dropDownMenu.classList.add("secondary-click");
             }
 
-            if (fixedPosEnabled) {
+            if (isFixedPositioningEnabled) {
                 dropDownMenu.style.position = "fixed";
             }
 
@@ -235,7 +235,7 @@ function menumove(event) {
                 var posX = event.pageX;
                 var posY = event.pageY;
 
-                if (fixedPosEnabled) {
+                if (isFixedPositioningEnabled) {
                     posX = event.clientX;
                     posY = event.clientY;
                 }
@@ -402,7 +402,7 @@ function log(event) {
         fadeEnabled = false;
         fadeBlurEnabled = false;
         isSecondaryClickEnabled = false;
-        fixedPosEnabled = false;
+        isFixedPositioningEnabled = false;
     }
 
     console.log(event.target.classList.toString());
@@ -415,5 +415,5 @@ function log(event) {
     console.log("fadeEnabled: " + fadeEnabled);
     console.log("fadeBlurEnabled: " + fadeBlurEnabled);
     console.log("secondaryClickEnabled: " + isSecondaryClickEnabled);
-    console.log("fixedPosEnabled: " + fixedPosEnabled);
+    console.log("fixedPosEnabled: " + isFixedPositioningEnabled);
 }
