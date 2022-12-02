@@ -16,7 +16,7 @@ for (var i = 0; i < all0.length; i++) {
     all0[i].style.left = "0";
 }
 
-var dropdownEnabled = 0;
+var dropdownEnabled = false;
 var dontDismissAtTapEnabled = 0;
 var dismissWhileScrolling = 0;
 var secondaryClickEnabled = 0;
@@ -46,7 +46,7 @@ var fadeBlurCurveType = "";
 // Dropdown Menus
 
 function dismissMenu() {
-    dropdownEnabled = 0;
+    dropdownEnabled = false;
 
     var dismissDuration = 0;
     var dropDownMenu = document.getElementById("dropdownContainer").childNodes[0];
@@ -354,8 +354,8 @@ function menumove(event) {
     console.log(nodes.join());
 
     if (event.target.classList.contains("dropdown") == true || event.target.classList.contains("dropdown-menu") == true || nodes.join().includes("dropdown-menu") == true && event.target.classList.contains("dismiss-button") == false) {
-        if (dropdownEnabled == 0) {
-            dropdownEnabled = 1;
+        if (!dropdownEnabled) {
+            dropdownEnabled = true;
 
             if (secondaryClickEnabled == 0 && event.button == 0) {
                 openMenu();
@@ -393,7 +393,7 @@ function secondaryClick(event) {
 }
 
 function log(event) {
-    if (event.target.classList.contains("dropdown") == false && dropdownEnabled == 0) {
+    if (event.target.classList.contains("dropdown") == false && !dropdownEnabled) {
         dontDismissAtTapEnabled = 0;
         scalingEnabled = 0;
         scalingBouncyEnabled = 0;
