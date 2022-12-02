@@ -22,7 +22,7 @@ var dismissWhileScrolling = false;
 var secondaryClickEnabled = false;
 var fixedPosEnabled = false;
 
-var scalingEnabled = 0;
+var scalingEnabled = false;
 var scalingBouncyEnabled = 0;
 var scalingBlurEnabled = 0;
 var scalingFadeEnabled = 0;
@@ -79,7 +79,7 @@ function dismissMenu() {
             dropDownMenu.style.filter = "blur(30px)";
         }, scalingFadeDuration * 1000);
 
-    } else if (scalingEnabled == 1) {
+    } else if (scalingEnabled) {
         dismissDuration = scalingDuration;
         dropDownMenu.style.transform = "scale(0)";
 
@@ -99,7 +99,7 @@ function dismissMenu() {
 
     setTimeout(() => {
         dontDismissAtTapEnabled = false;
-        scalingEnabled = 0;
+        scalingEnabled = false;
         scalingBouncyEnabled = 0;
         scalingBlurEnabled = 0;
         scalingFadeEnabled = 0;
@@ -135,7 +135,7 @@ function menumove(event) {
     // Animations
 
     if (event.target.classList.toString().indexOf("scaling") > -1) {
-        scalingEnabled = 1;
+        scalingEnabled = true;
         
         if(event.target.classList.toString().indexOf("@") > -1){
         var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
@@ -301,7 +301,7 @@ function menumove(event) {
                     dropDownMenu.style.transform = "scale(1)";
                 }, 0.1);
 
-            } else if (scalingEnabled == 1) {
+            } else if (scalingEnabled) {
                 dropDownMenu.style.filter = "blur(0px)";
                 dropDownMenu.style.opacity = "100%";
                 dropDownMenu.style.transition = "transform " + scalingDuration + "s " + scalingCurveType;
@@ -395,7 +395,7 @@ function secondaryClick(event) {
 function log(event) {
     if (event.target.classList.contains("dropdown") == false && !dropdownEnabled) {
         dontDismissAtTapEnabled = false;
-        scalingEnabled = 0;
+        scalingEnabled = false;
         scalingBouncyEnabled = 0;
         scalingBlurEnabled = 0;
         scalingFadeEnabled = 0;
