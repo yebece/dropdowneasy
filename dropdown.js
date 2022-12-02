@@ -26,7 +26,7 @@ var isScalingEnabled = false; // old name: scalingEnabled
 var isScalingBounceEnabled = false; // old name: scalingBouncyEnabled
 var isScalingBlurEnabled = false; // old name: scalingBlurEnabled
 var isScalingFadeEnabled = false; // old name: scalingFadeEnabled
-var fadeEnabled = false;
+var isFadingEnabled = false; // old name: fadeEnabled
 var fadeBlurEnabled = false;
 
 var scalingDuration = 0.2;
@@ -83,7 +83,7 @@ function dismissMenu() {
         dismissDuration = scalingDuration;
         dropDownMenu.style.transform = "scale(0)";
 
-    } else if (fadeEnabled) {
+    } else if (isFadingEnabled) {
         dismissDuration = fadeDuration;
         dropDownMenu.style.opacity = "0%";
         setTimeout(() => {
@@ -103,7 +103,7 @@ function dismissMenu() {
         isScalingBounceEnabled = false;
         isScalingBlurEnabled = false;
         isScalingFadeEnabled = false;
-        fadeEnabled = false;
+        isFadingEnabled = false;
         fadeBlurEnabled = false;
         isSecondaryClickEnabled = false;
         isFixedPositioningEnabled = false;
@@ -188,7 +188,7 @@ function menumove(event) {
     }
 
     if (event.target.classList.toString().indexOf("fade") > -1) {
-        fadeEnabled = true;
+        isFadingEnabled = true;
 
         if(event.target.classList.toString().indexOf("@") > -1){
             var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
@@ -321,7 +321,7 @@ function menumove(event) {
                     dropDownMenu.style.filter = "blur(0px)";
                 }, 0.1);
 
-            } else if (fadeEnabled) {
+            } else if (isFadingEnabled) {
                 dropDownMenu.style.filter = "blur(0px)";
                 dropDownMenu.style.transform = "scale(1)";
                 dropDownMenu.style.transition = "opacity " + fadeDuration + "s " + fadeCurveType;
@@ -399,7 +399,7 @@ function log(event) {
         isScalingBounceEnabled = false;
         isScalingBlurEnabled = false;
         isScalingFadeEnabled = false;
-        fadeEnabled = false;
+        isFadingEnabled = false;
         fadeBlurEnabled = false;
         isSecondaryClickEnabled = false;
         isFixedPositioningEnabled = false;
@@ -412,7 +412,7 @@ function log(event) {
     console.log("scalingBouncyEnabled: " + isScalingBounceEnabled);
     console.log("scalingBlurEnabled: " + isScalingBlurEnabled);
     console.log("scalingFadeEnabled: " + isScalingFadeEnabled);
-    console.log("fadeEnabled: " + fadeEnabled);
+    console.log("fadeEnabled: " + isFadingEnabled);
     console.log("fadeBlurEnabled: " + fadeBlurEnabled);
     console.log("secondaryClickEnabled: " + isSecondaryClickEnabled);
     console.log("fixedPosEnabled: " + isFixedPositioningEnabled);
