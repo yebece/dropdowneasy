@@ -16,7 +16,7 @@ for (var i = 0; i < all0.length; i++) {
     all0[i].style.left = "0";
 }
 
-var dropdownEnabled = false;
+var isDropdownEnabled = false; // old name: dropdownEnabled
 var dontDismissAtTapEnabled = false;
 var dismissWhileScrolling = false;
 var secondaryClickEnabled = false;
@@ -46,7 +46,7 @@ var fadeBlurCurveType = "";
 // Dropdown Menus
 
 function dismissMenu() {
-    dropdownEnabled = false;
+    isDropdownEnabled = false;
 
     var dismissDuration = 0;
     var dropDownMenu = document.getElementById("dropdownContainer").childNodes[0];
@@ -354,8 +354,8 @@ function menumove(event) {
     console.log(nodes.join());
 
     if (event.target.classList.contains("dropdown") == true || event.target.classList.contains("dropdown-menu") == true || nodes.join().includes("dropdown-menu") == true && event.target.classList.contains("dismiss-button") == false) {
-        if (!dropdownEnabled) {
-            dropdownEnabled = true;
+        if (!isDropdownEnabled) {
+            isDropdownEnabled = true;
 
             if (!secondaryClickEnabled && event.button == 0) {
                 openMenu();
@@ -393,7 +393,7 @@ function secondaryClick(event) {
 }
 
 function log(event) {
-    if (event.target.classList.contains("dropdown") == false && !dropdownEnabled) {
+    if (event.target.classList.contains("dropdown") == false && !isDropdownEnabled) {
         dontDismissAtTapEnabled = false;
         scalingEnabled = false;
         scalingBouncyEnabled = false;
@@ -406,7 +406,7 @@ function log(event) {
     }
 
     console.log(event.target.classList.toString());
-    console.log("dropdownEnabled: " + dropdownEnabled);
+    console.log("dropdownEnabled: " + isDropdownEnabled);
     console.log("dontDismissAtTapEnabled: " + dontDismissAtTapEnabled);
     console.log("scalingEnabled: " + scalingEnabled);
     console.log("scalingBouncyEnabled: " + scalingBouncyEnabled);
