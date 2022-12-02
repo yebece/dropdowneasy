@@ -23,7 +23,7 @@ var secondaryClickEnabled = false;
 var fixedPosEnabled = false;
 
 var scalingEnabled = false;
-var scalingBouncyEnabled = 0;
+var scalingBouncyEnabled = false;
 var scalingBlurEnabled = 0;
 var scalingFadeEnabled = 0;
 var fadeEnabled = 0;
@@ -59,7 +59,7 @@ function dismissMenu() {
             dropDownMenu.style.opacity = "0%";
         }, scalingBlurDuration * 1000);
 
-    } else if (scalingBouncyEnabled == 1) {
+    } else if (scalingBouncyEnabled) {
         dismissDuration = scalingBouncyDuration;
         dropDownMenu.style.transform = "scale(0)";
 
@@ -100,7 +100,7 @@ function dismissMenu() {
     setTimeout(() => {
         dontDismissAtTapEnabled = false;
         scalingEnabled = false;
-        scalingBouncyEnabled = 0;
+        scalingBouncyEnabled = false;
         scalingBlurEnabled = 0;
         scalingFadeEnabled = 0;
         fadeEnabled = 0;
@@ -149,7 +149,7 @@ function menumove(event) {
     }
 
     if (event.target.classList.toString().indexOf("scaling-bouncy") > -1) {
-        scalingBouncyEnabled = 1;
+        scalingBouncyEnabled = true;
 
         if(event.target.classList.toString().indexOf("@") > -1){
         var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
@@ -268,7 +268,7 @@ function menumove(event) {
                 }
             }
 
-            if (scalingBouncyEnabled == 1) {
+            if (scalingBouncyEnabled) {
                 dropDownMenu.style.transition = "transform " + scalingBouncyDuration + "s " + scalingBouncyCurveType;
                 dropDownMenu.style.filter = "blur(0px)";
                 dropDownMenu.style.opacity = "100%";
@@ -396,7 +396,7 @@ function log(event) {
     if (event.target.classList.contains("dropdown") == false && !dropdownEnabled) {
         dontDismissAtTapEnabled = false;
         scalingEnabled = false;
-        scalingBouncyEnabled = 0;
+        scalingBouncyEnabled = false;
         scalingBlurEnabled = 0;
         scalingFadeEnabled = 0;
         fadeEnabled = 0;
