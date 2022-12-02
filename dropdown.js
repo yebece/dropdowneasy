@@ -22,7 +22,7 @@ var shouldDismissWhileScrolling = false; // old name: dismissWhileScrolling
 var isSecondaryClickEnabled = false; // old name: secondaryClickEnabled
 var isFixedPositioningEnabled = false; // old name: fixedPosEnabled
 
-var scalingEnabled = false;
+var isScalingEnabled = false; // old name: scalingEnabled
 var scalingBouncyEnabled = false;
 var scalingBlurEnabled = false;
 var scalingFadeEnabled = false;
@@ -79,7 +79,7 @@ function dismissMenu() {
             dropDownMenu.style.filter = "blur(30px)";
         }, scalingFadeDuration * 1000);
 
-    } else if (scalingEnabled) {
+    } else if (isScalingEnabled) {
         dismissDuration = scalingDuration;
         dropDownMenu.style.transform = "scale(0)";
 
@@ -99,7 +99,7 @@ function dismissMenu() {
 
     setTimeout(() => {
         shouldNotDismissAtTap = false;
-        scalingEnabled = false;
+        isScalingEnabled = false;
         scalingBouncyEnabled = false;
         scalingBlurEnabled = false;
         scalingFadeEnabled = false;
@@ -135,7 +135,7 @@ function menumove(event) {
     // Animations
 
     if (event.target.classList.toString().indexOf("scaling") > -1) {
-        scalingEnabled = true;
+        isScalingEnabled = true;
         
         if(event.target.classList.toString().indexOf("@") > -1){
         var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
@@ -301,7 +301,7 @@ function menumove(event) {
                     dropDownMenu.style.transform = "scale(1)";
                 }, 0.1);
 
-            } else if (scalingEnabled) {
+            } else if (isScalingEnabled) {
                 dropDownMenu.style.filter = "blur(0px)";
                 dropDownMenu.style.opacity = "100%";
                 dropDownMenu.style.transition = "transform " + scalingDuration + "s " + scalingCurveType;
@@ -395,7 +395,7 @@ function secondaryClick(event) {
 function log(event) {
     if (event.target.classList.contains("dropdown") == false && !isDropdownEnabled) {
         shouldNotDismissAtTap = false;
-        scalingEnabled = false;
+        isScalingEnabled = false;
         scalingBouncyEnabled = false;
         scalingBlurEnabled = false;
         scalingFadeEnabled = false;
@@ -408,7 +408,7 @@ function log(event) {
     console.log(event.target.classList.toString());
     console.log("dropdownEnabled: " + isDropdownEnabled);
     console.log("dontDismissAtTapEnabled: " + shouldNotDismissAtTap);
-    console.log("scalingEnabled: " + scalingEnabled);
+    console.log("scalingEnabled: " + isScalingEnabled);
     console.log("scalingBouncyEnabled: " + scalingBouncyEnabled);
     console.log("scalingBlurEnabled: " + scalingBlurEnabled);
     console.log("scalingFadeEnabled: " + scalingFadeEnabled);
