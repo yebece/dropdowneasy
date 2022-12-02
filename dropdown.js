@@ -27,7 +27,7 @@ var scalingBouncyEnabled = false;
 var scalingBlurEnabled = false;
 var scalingFadeEnabled = false;
 var fadeEnabled = false;
-var fadeBlurEnabled = 0;
+var fadeBlurEnabled = false;
 
 var scalingDuration = 0.2;
 var scalingBouncyDuration = 0.2;
@@ -63,7 +63,7 @@ function dismissMenu() {
         dismissDuration = scalingBouncyDuration;
         dropDownMenu.style.transform = "scale(0)";
 
-    } else if (fadeBlurEnabled == 1) {
+    } else if (fadeBlurEnabled) {
         dismissDuration = fadeBlurDuration;
         dropDownMenu.style.opacity = "0%";
         dropDownMenu.style.filter = "blur(30px)";
@@ -104,7 +104,7 @@ function dismissMenu() {
         scalingBlurEnabled = false;
         scalingFadeEnabled = false;
         fadeEnabled = false;
-        fadeBlurEnabled = 0;
+        fadeBlurEnabled = false;
         secondaryClickEnabled = false;
         fixedPosEnabled = false;
         dismissWhileScrolling = false;
@@ -201,7 +201,7 @@ function menumove(event) {
     }
 
     if (event.target.classList.toString().indexOf("fade-blur") > -1) {
-        fadeBlurEnabled = 1;
+        fadeBlurEnabled = true;
 
         if(event.target.classList.toString().indexOf("@") > -1){
             var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
@@ -311,7 +311,7 @@ function menumove(event) {
                     dropDownMenu.style.transform = "scale(1)";
                 }, 0.1);
 
-            } else if (fadeBlurEnabled == 1) {
+            } else if (fadeBlurEnabled) {
                 dropDownMenu.style.transform = "scale(1)";
                 dropDownMenu.style.transition = "filter " + fadeBlurDuration + "s " + fadeBlurCurveType + ", opacity " + fadeBlurDuration + "s " + fadeBlurCurveType;
 
@@ -400,7 +400,7 @@ function log(event) {
         scalingBlurEnabled = false;
         scalingFadeEnabled = false;
         fadeEnabled = false;
-        fadeBlurEnabled = 0;
+        fadeBlurEnabled = false;
         secondaryClickEnabled = false;
         fixedPosEnabled = false;
     }
