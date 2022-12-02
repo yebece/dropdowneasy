@@ -24,7 +24,7 @@ var fixedPosEnabled = false;
 
 var scalingEnabled = false;
 var scalingBouncyEnabled = false;
-var scalingBlurEnabled = 0;
+var scalingBlurEnabled = false;
 var scalingFadeEnabled = 0;
 var fadeEnabled = 0;
 var fadeBlurEnabled = 0;
@@ -51,7 +51,7 @@ function dismissMenu() {
     var dismissDuration = 0;
     var dropDownMenu = document.getElementById("dropdownContainer").childNodes[0];
 
-    if (scalingBlurEnabled == 1) {
+    if (scalingBlurEnabled) {
         dismissDuration = scalingBlurDuration;
         dropDownMenu.style.transform = "scale(0)";
         dropDownMenu.style.filter = "blur(30px)";
@@ -101,7 +101,7 @@ function dismissMenu() {
         dontDismissAtTapEnabled = false;
         scalingEnabled = false;
         scalingBouncyEnabled = false;
-        scalingBlurEnabled = 0;
+        scalingBlurEnabled = false;
         scalingFadeEnabled = 0;
         fadeEnabled = 0;
         fadeBlurEnabled = 0;
@@ -162,7 +162,7 @@ function menumove(event) {
     }
 
     if (event.target.classList.toString().indexOf("scaling-blur") > -1) {
-        scalingBlurEnabled = 1;
+        scalingBlurEnabled = true;
 
         if(event.target.classList.toString().indexOf("@") > -1){
             var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
@@ -281,7 +281,7 @@ function menumove(event) {
                     }, scalingBouncyDuration * 1000 + 50);
                 }, 0.1);
 
-            } else if (scalingBlurEnabled == 1) {
+            } else if (scalingBlurEnabled) {
                 dropDownMenu.style.opacity = "100%";
                 dropDownMenu.style.transition = "filter " + scalingBlurDuration + "s " + scalingBlurCurveType + ", transform " + scalingBlurDuration + "s " + scalingBlurCurveType;
 
@@ -397,7 +397,7 @@ function log(event) {
         dontDismissAtTapEnabled = false;
         scalingEnabled = false;
         scalingBouncyEnabled = false;
-        scalingBlurEnabled = 0;
+        scalingBlurEnabled = false;
         scalingFadeEnabled = 0;
         fadeEnabled = 0;
         fadeBlurEnabled = 0;
