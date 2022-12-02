@@ -17,7 +17,7 @@ for (var i = 0; i < all0.length; i++) {
 }
 
 var dropdownEnabled = false;
-var dontDismissAtTapEnabled = 0;
+var dontDismissAtTapEnabled = false;
 var dismissWhileScrolling = 0;
 var secondaryClickEnabled = 0;
 var fixedPosEnabled = 0;
@@ -98,7 +98,7 @@ function dismissMenu() {
     }
 
     setTimeout(() => {
-        dontDismissAtTapEnabled = 0;
+        dontDismissAtTapEnabled = false;
         scalingEnabled = 0;
         scalingBouncyEnabled = 0;
         scalingBlurEnabled = 0;
@@ -116,8 +116,8 @@ function dismissMenu() {
 }
 
 function menumove(event) {
-    if (event.target.classList.contains("dont-dismiss-at-tap") == true) {
-        dontDismissAtTapEnabled = 1;
+    if (event.target.classList.contains("dont-dismiss-at-tap")) {
+        dontDismissAtTapEnabled = true;
     }
 
     if (event.target.classList.contains("dismiss-while-scrolling") == true) {
@@ -367,7 +367,7 @@ function menumove(event) {
                 dismissMenu();
             }
 
-        } else if (dontDismissAtTapEnabled == 0) {
+        } else if (!dontDismissAtTapEnabled) {
             dismissMenu();
         } else if (secondaryClickEnabled == 1 && event.button == 0 && nodes.join().includes("dropdown-menu") == false) {
             dismissMenu();
@@ -394,7 +394,7 @@ function secondaryClick(event) {
 
 function log(event) {
     if (event.target.classList.contains("dropdown") == false && !dropdownEnabled) {
-        dontDismissAtTapEnabled = 0;
+        dontDismissAtTapEnabled = false;
         scalingEnabled = 0;
         scalingBouncyEnabled = 0;
         scalingBlurEnabled = 0;
