@@ -19,7 +19,7 @@ for (var i = 0; i < all0.length; i++) {
 var dropdownEnabled = false;
 var dontDismissAtTapEnabled = false;
 var dismissWhileScrolling = false;
-var secondaryClickEnabled = 0;
+var secondaryClickEnabled = false;
 var fixedPosEnabled = 0;
 
 var scalingEnabled = 0;
@@ -105,7 +105,7 @@ function dismissMenu() {
         scalingFadeEnabled = 0;
         fadeEnabled = 0;
         fadeBlurEnabled = 0;
-        secondaryClickEnabled = 0;
+        secondaryClickEnabled = false;
         fixedPosEnabled = 0;
         dismissWhileScrolling = false;
 
@@ -124,8 +124,8 @@ function menumove(event) {
         dismissWhileScrolling = true;
     }
 
-    if (event.target.classList.contains("secondary-click") == true) {
-        secondaryClickEnabled = 1;
+    if (event.target.classList.contains("secondary-click")) {
+        secondaryClickEnabled = true;
     }
 
     if (event.target.classList.contains("fixed-pos") == true) {
@@ -223,7 +223,7 @@ function menumove(event) {
 
             var dropDownMenu = document.getElementById("dropdownContainer").childNodes[0];
 
-            if (secondaryClickEnabled == 1) {
+            if (secondaryClickEnabled) {
                 dropDownMenu.classList.add("secondary-click");
             }
 
@@ -357,19 +357,19 @@ function menumove(event) {
         if (!dropdownEnabled) {
             dropdownEnabled = true;
 
-            if (secondaryClickEnabled == 0 && event.button == 0) {
+            if (!secondaryClickEnabled && event.button == 0) {
                 openMenu();
-            } else if (secondaryClickEnabled == 1 && event.button == 2) {
+            } else if (secondaryClickEnabled && event.button == 2) {
                 openMenu();
-            } else if (secondaryClickEnabled == 1 && event.button == 0) {
+            } else if (secondaryClickEnabled && event.button == 0) {
                 dismissMenu();
-            } else if (secondaryClickEnabled == 0 && event.button == 2) {
+            } else if (!secondaryClickEnabled && event.button == 2) {
                 dismissMenu();
             }
 
         } else if (!dontDismissAtTapEnabled) {
             dismissMenu();
-        } else if (secondaryClickEnabled == 1 && event.button == 0 && nodes.join().includes("dropdown-menu") == false) {
+        } else if (secondaryClickEnabled && event.button == 0 && !nodes.join().includes("dropdown-menu")) {
             dismissMenu();
         }
 
@@ -385,8 +385,8 @@ window.onscroll = function(e) {
 }
 
 function secondaryClick(event) {
-    if (event.target.parentElement.classList.contains("secondary-click") == true || event.target.classList.contains("secondary-click") == true) {
-        secondaryClickEnabled = 1;
+    if (event.target.parentElement.classList.contains("secondary-click") || event.target.classList.contains("secondary-click")) {
+        secondaryClickEnabled = true;
         event.preventDefault();
     }
 
@@ -401,7 +401,7 @@ function log(event) {
         scalingFadeEnabled = 0;
         fadeEnabled = 0;
         fadeBlurEnabled = 0;
-        secondaryClickEnabled = 0;
+        secondaryClickEnabled = false;
         fixedPosEnabled = 0;
     }
 
