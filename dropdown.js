@@ -18,7 +18,7 @@ for (var i = 0; i < all0.length; i++) {
 
 var isDropdownEnabled = false; // old name: dropdownEnabled
 var shouldNotDismissAtTap = false; // old name: dontDismissAtTapEnabled, TODO: invert this variable!
-var dismissWhileScrolling = false;
+var shouldDismissWhileScrolling = false; // old name: dismissWhileScrolling
 var secondaryClickEnabled = false;
 var fixedPosEnabled = false;
 
@@ -107,7 +107,7 @@ function dismissMenu() {
         fadeBlurEnabled = false;
         secondaryClickEnabled = false;
         fixedPosEnabled = false;
-        dismissWhileScrolling = false;
+        shouldDismissWhileScrolling = false;
 
         document.getElementById("dropdownn").innerHTML += dropDownMenu.outerHTML;
         dropDownMenu.outerHTML = "";
@@ -121,7 +121,7 @@ function menumove(event) {
     }
 
     if (event.target.classList.contains("dismiss-while-scrolling")) {
-        dismissWhileScrolling = true;
+        shouldDismissWhileScrolling = true;
     }
 
     if (event.target.classList.contains("secondary-click")) {
@@ -379,7 +379,7 @@ function menumove(event) {
 }
 
 window.onscroll = function(e) {
-    if (dismissWhileScrolling) {
+    if (shouldDismissWhileScrolling) {
         dismissMenu();
     }
 }
