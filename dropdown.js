@@ -16,47 +16,7 @@ for (var i = 0; i < all0.length; i++) {
     all0[i].style.left = "0";
 }
 
-function DropdownEasyConfiguration() {
-    this.isDropdownEnabled = false; // old name: dropdownEnabled
-    this.shouldNotDismissAtTap = false; // old name: dontDismissAtTapEnabled, TODO: invert this variable!
-    this.shouldDismissWhileScrolling = false; // old name: dismissWhileScrolling
-    this.isSecondaryClickEnabled = false; // old name: secondaryClickEnabled
-    this.isFixedPositioningEnabled = false; // old name: fixedPosEnabled
-    this.isScalingEnabled = false; // old name: scalingEnabled
-    this.isScalingBounceEnabled = false; // old name: scalingBouncyEnabled
-    this.isScalingBlurEnabled = false; // old name: scalingBlurEnabled
-    this.isScalingFadeEnabled = false; // old name: scalingFadeEnabled
-    this.isFadingEnabled = false; // old name: fadeEnabled
-    this.isFadingBlurEnabled = false; // old name: fadeBlurEnabled
-    this.scalingDurationSeconds = 0.2;
-    this.scalingBounceDurationSeconds = 0.2;
-    this.scalingBlurDurationSeconds = 0.2;
-    this.scalingFadeDurationSeconds = 0.2;
-    this.fadingDurationSeconds = 0.2;
-    this.fadingBlurDurationSeconds = 0.2;
-    this.scalingCurveType = "";
-    this.scalingBouncyCurveType = "";
-    this.scalingBlurCurveType = "";
-    this.scalingFadeCurveType = "";
-    this.fadeCurveType = "";
-    this.fadeBlurCurveType = "";
-}
-
-DropdownEasyConfiguration.prototype.resetState = function() {
-    this.shouldNotDismissAtTap = false;
-    this.isScalingEnabled = false;
-    this.isScalingBounceEnabled = false;
-    this.isScalingBlurEnabled = false;
-    this.isScalingFadeEnabled = false;
-    this.isFadingEnabled = false;
-    this.isFadingBlurEnabled = false;
-    this.isSecondaryClickEnabled = false;
-    this.isFixedPositioningEnabled = false;
-    this.shouldDismissWhileScrolling = false;
-};
-
-var ddeConfig = new DropdownEasyConfiguration();
-
+// Animations definitions
 var ddeAnimations = {
     none: {
         dismissDurationSeconds: 0,
@@ -133,36 +93,74 @@ var ddeAnimations = {
     },
 };
 
+function DropdownEasyConfiguration() {
+    this.isDropdownEnabled = false; // old name: dropdownEnabled
+    this.shouldNotDismissAtTap = false; // old name: dontDismissAtTapEnabled, TODO: invert this variable!
+    this.shouldDismissWhileScrolling = false; // old name: dismissWhileScrolling
+    this.isSecondaryClickEnabled = false; // old name: secondaryClickEnabled
+    this.isFixedPositioningEnabled = false; // old name: fixedPosEnabled
+    this.isScalingEnabled = false; // old name: scalingEnabled
+    this.isScalingBounceEnabled = false; // old name: scalingBouncyEnabled
+    this.isScalingBlurEnabled = false; // old name: scalingBlurEnabled
+    this.isScalingFadeEnabled = false; // old name: scalingFadeEnabled
+    this.isFadingEnabled = false; // old name: fadeEnabled
+    this.isFadingBlurEnabled = false; // old name: fadeBlurEnabled
+    this.scalingDurationSeconds = 0.2;
+    this.scalingBounceDurationSeconds = 0.2;
+    this.scalingBlurDurationSeconds = 0.2;
+    this.scalingFadeDurationSeconds = 0.2;
+    this.fadingDurationSeconds = 0.2;
+    this.fadingBlurDurationSeconds = 0.2;
+    this.scalingCurveType = "";
+    this.scalingBouncyCurveType = "";
+    this.scalingBlurCurveType = "";
+    this.scalingFadeCurveType = "";
+    this.fadeCurveType = "";
+    this.fadeBlurCurveType = "";
+}
+
+DropdownEasyConfiguration.prototype.resetState = function() {
+    this.shouldNotDismissAtTap = false;
+    this.isScalingEnabled = false;
+    this.isScalingBounceEnabled = false;
+    this.isScalingBlurEnabled = false;
+    this.isScalingFadeEnabled = false;
+    this.isFadingEnabled = false;
+    this.isFadingBlurEnabled = false;
+    this.isSecondaryClickEnabled = false;
+    this.isFixedPositioningEnabled = false;
+    this.shouldDismissWhileScrolling = false;
+};
+
+var ddeConfig = new DropdownEasyConfiguration();
+
 // Dropdown Menus
+
+function selectAnimation() {
+    if (ddeConfig.isScalingBlurEnabled) {
+        return ddeAnimations.scalingBlur;
+    } else if (ddeConfig.isScalingBounceEnabled) {
+        return ddeAnimations.scalingBounce;
+    } else if (ddeConfig.isFadingBlurEnabled) {
+        return ddeAnimations.fadingBlur;
+    } else if (ddeConfig.isScalingFadeEnabled) {
+        return ddeAnimations.scalingFade;
+    } else if (ddeConfig.isScalingEnabled) {
+        return ddeAnimations.scaling;
+    } else if (ddeConfig.isFadingEnabled) {
+        return ddeAnimations.fading;
+    } else {
+        return ddeAnimations.none;
+    }
+}
 
 function dismissMenu() {
     ddeConfig.isDropdownEnabled = false;
 
-    var dismissDuration = 0;
     var dropDownMenu = document.getElementById("dropdownContainer").childNodes[0];
-
-    if (ddeConfig.isScalingBlurEnabled) {
-        dismissDuration = ddeConfig.scalingBlurDurationSeconds;
-        dismissMenuScalingBlur();
-    } else if (ddeConfig.isScalingBounceEnabled) {
-        dismissDuration = ddeConfig.scalingBounceDurationSeconds;
-        dismissMenuScalingBounce();
-    } else if (ddeConfig.isFadingBlurEnabled) {
-        dismissDuration = ddeConfig.fadingBlurDurationSeconds;
-        dismissMenuFadingBlur();
-    } else if (ddeConfig.isScalingFadeEnabled) {
-        dismissDuration = ddeConfig.scalingFadeDurationSeconds;
-        dismissMenuScalingFade();
-    } else if (ddeConfig.isScalingEnabled) {
-        dismissDuration = ddeConfig.scalingDurationSeconds;
-        dismissMenuScaling();
-    } else if (ddeConfig.isFadingEnabled) {
-        dismissDuration = ddeConfig.fadingDurationSeconds;
-        dismissMenuFading();
-    } else {
-        dismissDuration = 0;
-        dismissMenuNone();
-    }
+    var animation = selectAnimation();
+    
+    animation.dismissMenu(dropDownMenu);
 
     setTimeout(() => {
         ddeConfig.resetState();
@@ -170,35 +168,7 @@ function dismissMenu() {
         document.getElementById("dropdownn").innerHTML += dropDownMenu.outerHTML;
         dropDownMenu.outerHTML = "";
         document.getElementById("dropdownn").setAttribute("id", "");
-    }, dismissDuration * 1000 + 50);
-
-    function dismissMenuNone() {
-        ddeAnimations.none.dismissMenu(dropDownMenu);
-    }
-
-    function dismissMenuFading() {
-        ddeAnimations.fading.dismissMenu(dropDownMenu);
-    }
-
-    function dismissMenuScaling() {
-        ddeAnimations.scaling.dismissMenu(dropDownMenu);
-    }
-
-    function dismissMenuScalingFade() {
-        ddeAnimations.scalingFade.dismissMenu(dropDownMenu);
-    }
-
-    function dismissMenuFadingBlur() {
-        ddeAnimations.fadingBlur.dismissMenu(dropDownMenu);
-    }
-
-    function dismissMenuScalingBounce() {
-        ddeAnimations.scalingBounce.dismissMenu(dropDownMenu);
-    }
-
-    function dismissMenuScalingBlur() {
-        ddeAnimations.scalingBlur.dismissMenu(dropDownMenu);
-    }
+    }, animation.dismissDurationSeconds * 1000 + 50);
 }
 
 function menumove(event) {
@@ -228,7 +198,6 @@ function menumove(event) {
             var x = classString.substring(classString.indexOf("@"), classString.length) + " ";
             var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
 
-            // TODO: eval()?! are you serious
             ddeConfig.scalingDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
             ddeConfig.scalingCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
@@ -241,7 +210,6 @@ function menumove(event) {
             var x = classString.substring(classString.indexOf("@"), classString.length) + " ";
             var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
 
-            // TODO: Get rid of evals, use safer alternatives
             ddeConfig.scalingBounceDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
             ddeConfig.scalingBouncyCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
@@ -254,7 +222,6 @@ function menumove(event) {
             var x = classString.substring(classString.indexOf("@"), classString.length) + " ";
             var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
 
-            // TODO: Eval must be gone
             ddeConfig.scalingBlurDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
             ddeConfig.scalingBlurCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
@@ -267,7 +234,6 @@ function menumove(event) {
             var x = classString.substring(classString.indexOf("@"), classString.length) + " ";
             var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
 
-            // TODO: You know what to do.
             ddeConfig.scalingFadeDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
             ddeConfig.scalingFadeCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
