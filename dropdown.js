@@ -26,6 +26,13 @@ var ddeAnimations = {
             dropDownMenu.style.filter = "blur(30px)";
             dropDownMenu.style.opacity = "0%";
             dropDownMenu.style.transform = "scale(0)";
+        },
+
+        dropDownOpen: function(dropDownMenu) {
+            dropDownMenu.style.transition = "none";
+            dropDownMenu.style.filter = "blur(0px)";
+            dropDownMenu.style.opacity = "100%";
+            dropDownMenu.style.transform = "scale(1)";
         }
     },
 
@@ -38,6 +45,16 @@ var ddeAnimations = {
             setTimeout(() => {
                 dropDownMenu.style.opacity = "0%";
             }, this.dismissDurationSeconds * 1000);
+        },
+
+        dropDownOpen: function(dropDownMenu) {
+            dropDownMenu.style.opacity = "100%";
+            dropDownMenu.style.transition = "filter " + ddeConfig.scalingBlurDurationSeconds + "s " + ddeConfig.scalingBlurCurveType + ", transform " + ddeConfig.scalingBlurDurationSeconds + "s " + ddeConfig.scalingBlurCurveType;
+
+            setTimeout(() => {
+                dropDownMenu.style.transform = "scale(1)";
+                dropDownMenu.style.filter = "blur(0px)";
+            }, 0.1);
         }
     },
 
@@ -46,6 +63,19 @@ var ddeAnimations = {
 
         dismissMenu: function(dropDownMenu) {
             dropDownMenu.style.transform = "scale(0)";
+        },
+
+        dropDownOpen: function(dropDownMenu) {
+            dropDownMenu.style.transition = "transform " + ddeConfig.scalingBounceDurationSeconds + "s " + ddeConfig.scalingBouncyCurveType;
+            dropDownMenu.style.filter = "blur(0px)";
+            dropDownMenu.style.opacity = "100%";
+
+            setTimeout(() => {
+                dropDownMenu.style.transform = "scale(1.01)";
+                setTimeout(() => {
+                    dropDownMenu.style.transform = "scale(1)";
+                }, ddeConfig.scalingBounceDurationSeconds * 1000 + 50);
+            }, 0.1);
         }
     },
 
@@ -58,6 +88,16 @@ var ddeAnimations = {
             setTimeout(() => {
                 dropDownMenu.style.transform = "scale(0)";
             }, this.dismissDurationSeconds * 1000);
+        },
+
+        dropDownOpen: function(dropDownMenu) {
+            dropDownMenu.style.transform = "scale(1)";
+            dropDownMenu.style.transition = "filter " + ddeConfig.fadingBlurDurationSeconds + "s " + ddeConfig.fadeBlurCurveType + ", opacity " + ddeConfig.fadingBlurDurationSeconds + "s " + ddeConfig.fadeBlurCurveType;
+            
+            setTimeout(() => {
+                dropDownMenu.style.opacity = "100%";
+                dropDownMenu.style.filter = "blur(0px)";
+            }, 0.1);
         }
     },
 
@@ -70,6 +110,16 @@ var ddeAnimations = {
             setTimeout(() => {
                 dropDownMenu.style.filter = "blur(30px)";
             }, this.dismissDurationSeconds * 1000);
+        },
+
+        dropDownOpen: function(dropDownMenu) {
+            dropDownMenu.style.filter = "blur(0px)";
+            dropDownMenu.style.transition = "opacity " + ddeConfig.scalingFadeDurationSeconds + "s " + ddeConfig.scalingFadeCurveType + ", transform " + ddeConfig.scalingFadeDurationSeconds + "s " + ddeConfig.scalingFadeCurveType;
+
+            setTimeout(() => {
+                dropDownMenu.style.opacity = "100%";
+                dropDownMenu.style.transform = "scale(1)";
+            }, 0.1);
         }
     },
 
@@ -78,6 +128,16 @@ var ddeAnimations = {
 
         dismissMenu: function(dropDownMenu) {
             dropDownMenu.style.transform = "scale(0)";
+        },
+
+        dropDownOpen: function(dropDownMenu) {
+            dropDownMenu.style.filter = "blur(0px)";
+            dropDownMenu.style.opacity = "100%";
+            dropDownMenu.style.transition = "transform " + ddeConfig.scalingDurationSeconds + "s " + ddeConfig.scalingCurveType;
+            
+            setTimeout(() => {
+                dropDownMenu.style.transform = "scale(1)";
+            }, 0.1);
         }
     },
 
@@ -89,6 +149,16 @@ var ddeAnimations = {
             setTimeout(() => {
                 dropDownMenu.style.transform = "scale(0)";
             }, this.dismissDurationSeconds * 1000);
+        },
+
+        dropDownOpen: function(dropDownMenu) {
+            dropDownMenu.style.filter = "blur(0px)";
+            dropDownMenu.style.transform = "scale(1)";
+            dropDownMenu.style.transition = "opacity " + ddeConfig.fadingDurationSeconds + "s " + ddeConfig.fadeCurveType;
+
+            setTimeout(() => {
+                dropDownMenu.style.opacity = "100%";
+            }, 0.1);
         }
     },
 };
@@ -343,73 +413,31 @@ function menumove(event) {
 
 
             function dropDownOpenNone() {
-                dropDownMenu.style.transition = "none";
-                dropDownMenu.style.filter = "blur(0px)";
-                dropDownMenu.style.opacity = "100%";
-                dropDownMenu.style.transform = "scale(1)";
+                ddeAnimations.none.dropDownOpen(dropDownMenu);
             }
 
             function dropDownOpenFading() {
-                dropDownMenu.style.filter = "blur(0px)";
-                dropDownMenu.style.transform = "scale(1)";
-                dropDownMenu.style.transition = "opacity " + ddeConfig.fadingDurationSeconds + "s " + ddeConfig.fadeCurveType;
-
-                setTimeout(() => {
-                    dropDownMenu.style.opacity = "100%";
-                }, 0.1);
+                ddeAnimations.fading.dropDownOpen(dropDownMenu);
             }
 
             function dropDownOpenFadingBlur() {
-                dropDownMenu.style.transform = "scale(1)";
-                dropDownMenu.style.transition = "filter " + ddeConfig.fadingBlurDurationSeconds + "s " + ddeConfig.fadeBlurCurveType + ", opacity " + ddeConfig.fadingBlurDurationSeconds + "s " + ddeConfig.fadeBlurCurveType;
-                
-                setTimeout(() => {
-                    dropDownMenu.style.opacity = "100%";
-                    dropDownMenu.style.filter = "blur(0px)";
-                }, 0.1);
+                ddeAnimations.fadingBlur.dropDownOpen(dropDownMenu);
             }
 
             function dropDownOpenScaling() {
-                dropDownMenu.style.filter = "blur(0px)";
-                dropDownMenu.style.opacity = "100%";
-                dropDownMenu.style.transition = "transform " + ddeConfig.scalingDurationSeconds + "s " + ddeConfig.scalingCurveType;
-                
-                setTimeout(() => {
-                    dropDownMenu.style.transform = "scale(1)";
-                }, 0.1);
+                ddeAnimations.scaling.dropDownOpen(dropDownMenu);
             }
 
             function dropDownOpenScalingFade() {
-                dropDownMenu.style.filter = "blur(0px)";
-                dropDownMenu.style.transition = "opacity " + ddeConfig.scalingFadeDurationSeconds + "s " + ddeConfig.scalingFadeCurveType + ", transform " + ddeConfig.scalingFadeDurationSeconds + "s " + ddeConfig.scalingFadeCurveType;
-
-                setTimeout(() => {
-                    dropDownMenu.style.opacity = "100%";
-                    dropDownMenu.style.transform = "scale(1)";
-                }, 0.1);
+                ddeAnimations.scalingFade.dropDownOpen(dropDownMenu);
             }
 
             function dropDownOpenScalingBlur() {
-                dropDownMenu.style.opacity = "100%";
-                dropDownMenu.style.transition = "filter " + ddeConfig.scalingBlurDurationSeconds + "s " + ddeConfig.scalingBlurCurveType + ", transform " + ddeConfig.scalingBlurDurationSeconds + "s " + ddeConfig.scalingBlurCurveType;
-
-                setTimeout(() => {
-                    dropDownMenu.style.transform = "scale(1)";
-                    dropDownMenu.style.filter = "blur(0px)";
-                }, 0.1);
+                ddeAnimations.scalingBlur.dropDownOpen(dropDownMenu);
             }
 
             function dropDownOpenScalingBounce() {
-                dropDownMenu.style.transition = "transform " + ddeConfig.scalingBounceDurationSeconds + "s " + ddeConfig.scalingBouncyCurveType;
-                dropDownMenu.style.filter = "blur(0px)";
-                dropDownMenu.style.opacity = "100%";
-
-                setTimeout(() => {
-                    dropDownMenu.style.transform = "scale(1.01)";
-                    setTimeout(() => {
-                        dropDownMenu.style.transform = "scale(1)";
-                    }, ddeConfig.scalingBounceDurationSeconds * 1000 + 50);
-                }, 0.1);
+                ddeAnimations.scalingBounce.dropDownOpen(dropDownMenu);
             }
         }
         dropDownOpen(event.target.childNodes[1]);
