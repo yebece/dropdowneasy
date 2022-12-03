@@ -16,6 +16,37 @@ for (var i = 0; i < all0.length; i++) {
     all0[i].style.left = "0";
 }
 
+function DropdownEasyConfig() {
+    this.isDropdownEnabled = false;
+    this.shouldNotDismissAtTap = false; // TODO: invert this variable!
+    this.shouldDismissWhileScrolling = false;
+    this.isSecondaryClickEnabled = false;
+    this.isFixedPositioningEnabled = false;
+
+    this.isScalingEnabled = false;
+    this.isScalingBounceEnabled = false;
+    this.isScalingBlurEnabled = false;
+    this.isScalingFadeEnabled = false;
+    this.isFadingEnabled = false;
+    this.isFadingBlurEnabled = false;
+
+    this.scalingDurationSeconds = 0.2;
+    this.scalingBounceDurationSeconds = 0.2;
+    this.scalingBlurDurationSeconds = 0.2;
+    this.scalingFadeDurationSeconds = 0.2;
+    this.fadingDurationSeconds = 0.2;
+    this.fadingBlurDurationSeconds = 0.2;
+
+    this.scalingCurveType = "";
+    this.scalingBounceCurveType = "";
+    this.scalingBlurCurveType = "";
+    this.scalingFadeCurveType = "";
+    this.fadeCurveType = "";
+    this.fadeBlurCurveType = "";
+}
+
+var dropdownConfig = new DropdownEasyConfig();
+
 var isDropdownEnabled = false; // old name: dropdownEnabled
 var shouldNotDismissAtTap = false; // old name: dontDismissAtTapEnabled, TODO: invert this variable!
 var shouldDismissWhileScrolling = false; // old name: dismissWhileScrolling
