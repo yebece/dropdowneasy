@@ -340,6 +340,7 @@ function menumove(event) {
                 dropDownMenu.style.filter = "blur(0px)";
                 dropDownMenu.style.opacity = "100%";
                 dropDownMenu.style.transform = "scale(1)";
+                
                 menuPositionCalculation();
             }
 
@@ -348,54 +349,59 @@ function menumove(event) {
                 dropDownMenu.style.transform = "scale(1)";
                 dropDownMenu.style.transition = "opacity " + ddeConfig.fadingDurationSeconds + "s " + ddeConfig.fadeCurveType;
 
-                menuPositionCalculation();
                 setTimeout(() => {
                     dropDownMenu.style.opacity = "100%";
                 }, 0.1);
+
+                menuPositionCalculation();
             }
 
             function dropDownOpenFadingBlur() {
                 dropDownMenu.style.transform = "scale(1)";
                 dropDownMenu.style.transition = "filter " + ddeConfig.fadingBlurDurationSeconds + "s " + ddeConfig.fadeBlurCurveType + ", opacity " + ddeConfig.fadingBlurDurationSeconds + "s " + ddeConfig.fadeBlurCurveType;
-
-                menuPositionCalculation();
+                
                 setTimeout(() => {
                     dropDownMenu.style.opacity = "100%";
                     dropDownMenu.style.filter = "blur(0px)";
                 }, 0.1);
+
+                menuPositionCalculation();
             }
 
             function dropDownOpenScaling() {
                 dropDownMenu.style.filter = "blur(0px)";
                 dropDownMenu.style.opacity = "100%";
                 dropDownMenu.style.transition = "transform " + ddeConfig.scalingDurationSeconds + "s " + ddeConfig.scalingCurveType;
-
-                menuPositionCalculation();
+                
                 setTimeout(() => {
                     dropDownMenu.style.transform = "scale(1)";
                 }, 0.1);
+
+                menuPositionCalculation();
             }
 
             function dropDownOpenScalingFade() {
                 dropDownMenu.style.filter = "blur(0px)";
                 dropDownMenu.style.transition = "opacity " + ddeConfig.scalingFadeDurationSeconds + "s " + ddeConfig.scalingFadeCurveType + ", transform " + ddeConfig.scalingFadeDurationSeconds + "s " + ddeConfig.scalingFadeCurveType;
 
-                menuPositionCalculation();
                 setTimeout(() => {
                     dropDownMenu.style.opacity = "100%";
                     dropDownMenu.style.transform = "scale(1)";
                 }, 0.1);
+
+                menuPositionCalculation();
             }
 
             function dropDownOpenScalingBlur() {
                 dropDownMenu.style.opacity = "100%";
                 dropDownMenu.style.transition = "filter " + ddeConfig.scalingBlurDurationSeconds + "s " + ddeConfig.scalingBlurCurveType + ", transform " + ddeConfig.scalingBlurDurationSeconds + "s " + ddeConfig.scalingBlurCurveType;
 
-                menuPositionCalculation();
                 setTimeout(() => {
                     dropDownMenu.style.transform = "scale(1)";
                     dropDownMenu.style.filter = "blur(0px)";
                 }, 0.1);
+
+                menuPositionCalculation();
             }
 
             function dropDownOpenScalingBounce() {
@@ -403,13 +409,14 @@ function menumove(event) {
                 dropDownMenu.style.filter = "blur(0px)";
                 dropDownMenu.style.opacity = "100%";
 
-                menuPositionCalculation();
                 setTimeout(() => {
                     dropDownMenu.style.transform = "scale(1.01)";
                     setTimeout(() => {
                         dropDownMenu.style.transform = "scale(1)";
                     }, ddeConfig.scalingBounceDurationSeconds * 1000 + 50);
                 }, 0.1);
+
+                menuPositionCalculation();
             }
         }
         dropDownOpen(event.target.childNodes[1]);
