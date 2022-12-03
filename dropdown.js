@@ -29,12 +29,12 @@ var isScalingFadeEnabled = false; // old name: scalingFadeEnabled
 var isFadingEnabled = false; // old name: fadeEnabled
 var isFadingBlurEnabled = false; // old name: fadeBlurEnabled
 
-var scalingDuration = 0.2;
-var scalingBouncyDuration = 0.2;
-var scalingBlurDuration = 0.2;
-var scalingFadeDuration = 0.2;
-var fadeDuration = 0.2;
-var fadeBlurDuration = 0.2;
+var scalingDurationSeconds = 0.2;
+var scalingBounceDurationSeconds = 0.2;
+var scalingBlurDurationSeconds = 0.2;
+var scalingFadeDurationSeconds = 0.2;
+var fadingDurationSeconds = 0.2;
+var fadingBlurDurationSeconds = 0.2;
 
 var scalingCurveType = "";
 var scalingBouncyCurveType = "";
@@ -52,43 +52,43 @@ function dismissMenu() {
     var dropDownMenu = document.getElementById("dropdownContainer").childNodes[0];
 
     if (isScalingBlurEnabled) {
-        dismissDuration = scalingBlurDuration;
+        dismissDuration = scalingBlurDurationSeconds;
         dropDownMenu.style.transform = "scale(0)";
         dropDownMenu.style.filter = "blur(30px)";
         setTimeout(() => {
             dropDownMenu.style.opacity = "0%";
-        }, scalingBlurDuration * 1000);
+        }, scalingBlurDurationSeconds * 1000);
 
     } else if (isScalingBounceEnabled) {
-        dismissDuration = scalingBouncyDuration;
+        dismissDuration = scalingBounceDurationSeconds;
         dropDownMenu.style.transform = "scale(0)";
 
     } else if (isFadingBlurEnabled) {
-        dismissDuration = fadeBlurDuration;
+        dismissDuration = fadingBlurDurationSeconds;
         dropDownMenu.style.opacity = "0%";
         dropDownMenu.style.filter = "blur(30px)";
         setTimeout(() => {
             dropDownMenu.style.transform = "scale(0)";
-        }, fadeBlurDuration * 1000);
+        }, fadingBlurDurationSeconds * 1000);
 
     } else if (isScalingFadeEnabled) {
-        dismissDuration = scalingFadeDuration;
+        dismissDuration = scalingFadeDurationSeconds;
         dropDownMenu.style.opacity = "0%";
         dropDownMenu.style.transform = "scale(0)";
         setTimeout(() => {
             dropDownMenu.style.filter = "blur(30px)";
-        }, scalingFadeDuration * 1000);
+        }, scalingFadeDurationSeconds * 1000);
 
     } else if (isScalingEnabled) {
-        dismissDuration = scalingDuration;
+        dismissDuration = scalingDurationSeconds;
         dropDownMenu.style.transform = "scale(0)";
 
     } else if (isFadingEnabled) {
-        dismissDuration = fadeDuration;
+        dismissDuration = fadingDurationSeconds;
         dropDownMenu.style.opacity = "0%";
         setTimeout(() => {
             dropDownMenu.style.transform = "scale(0)";
-        }, fadeDuration * 1000);
+        }, fadingDurationSeconds * 1000);
 
     } else {
         dropDownMenu.style.transition = "none";
@@ -143,7 +143,7 @@ function menumove(event) {
 
         var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
 
-        scalingDuration = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
+        scalingDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
         scalingCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
     }
@@ -156,7 +156,7 @@ function menumove(event) {
 
         var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
 
-        scalingBouncyDuration = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
+        scalingBounceDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
         scalingBouncyCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
     }
@@ -169,7 +169,7 @@ function menumove(event) {
 
         var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
         
-        scalingBlurDuration = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
+        scalingBlurDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
         scalingBlurCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
     }
@@ -182,7 +182,7 @@ function menumove(event) {
 
         var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
         
-        scalingFadeDuration = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
+        scalingFadeDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
         scalingFadeCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
     }
@@ -195,7 +195,7 @@ function menumove(event) {
 
         var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
         
-        fadeDuration = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
+        fadingDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
         fadeCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
     }
@@ -208,7 +208,7 @@ function menumove(event) {
 
         var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
         
-        fadeBlurDuration = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
+        fadingBlurDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
         fadeBlurCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
     }
@@ -269,7 +269,7 @@ function menumove(event) {
             }
 
             if (isScalingBounceEnabled) {
-                dropDownMenu.style.transition = "transform " + scalingBouncyDuration + "s " + scalingBouncyCurveType;
+                dropDownMenu.style.transition = "transform " + scalingBounceDurationSeconds + "s " + scalingBouncyCurveType;
                 dropDownMenu.style.filter = "blur(0px)";
                 dropDownMenu.style.opacity = "100%";
 
@@ -278,12 +278,12 @@ function menumove(event) {
                     dropDownMenu.style.transform = "scale(1.01)";
                     setTimeout(() => {
                         dropDownMenu.style.transform = "scale(1)";
-                    }, scalingBouncyDuration * 1000 + 50);
+                    }, scalingBounceDurationSeconds * 1000 + 50);
                 }, 0.1);
 
             } else if (isScalingBlurEnabled) {
                 dropDownMenu.style.opacity = "100%";
-                dropDownMenu.style.transition = "filter " + scalingBlurDuration + "s " + scalingBlurCurveType + ", transform " + scalingBlurDuration + "s " + scalingBlurCurveType;
+                dropDownMenu.style.transition = "filter " + scalingBlurDurationSeconds + "s " + scalingBlurCurveType + ", transform " + scalingBlurDurationSeconds + "s " + scalingBlurCurveType;
 
                 menuPositionCalculation();
                 setTimeout(() => {
@@ -293,7 +293,7 @@ function menumove(event) {
 
             } else if (isScalingFadeEnabled) {
                 dropDownMenu.style.filter = "blur(0px)";
-                dropDownMenu.style.transition = "opacity " + scalingFadeDuration + "s " + scalingFadeCurveType + ", transform " + scalingFadeDuration + "s " + scalingFadeCurveType;
+                dropDownMenu.style.transition = "opacity " + scalingFadeDurationSeconds + "s " + scalingFadeCurveType + ", transform " + scalingFadeDurationSeconds + "s " + scalingFadeCurveType;
 
                 menuPositionCalculation();
                 setTimeout(() => {
@@ -304,7 +304,7 @@ function menumove(event) {
             } else if (isScalingEnabled) {
                 dropDownMenu.style.filter = "blur(0px)";
                 dropDownMenu.style.opacity = "100%";
-                dropDownMenu.style.transition = "transform " + scalingDuration + "s " + scalingCurveType;
+                dropDownMenu.style.transition = "transform " + scalingDurationSeconds + "s " + scalingCurveType;
 
                 menuPositionCalculation();
                 setTimeout(() => {
@@ -313,7 +313,7 @@ function menumove(event) {
 
             } else if (isFadingBlurEnabled) {
                 dropDownMenu.style.transform = "scale(1)";
-                dropDownMenu.style.transition = "filter " + fadeBlurDuration + "s " + fadeBlurCurveType + ", opacity " + fadeBlurDuration + "s " + fadeBlurCurveType;
+                dropDownMenu.style.transition = "filter " + fadingBlurDurationSeconds + "s " + fadeBlurCurveType + ", opacity " + fadingBlurDurationSeconds + "s " + fadeBlurCurveType;
 
                 menuPositionCalculation();
                 setTimeout(() => {
@@ -324,7 +324,7 @@ function menumove(event) {
             } else if (isFadingEnabled) {
                 dropDownMenu.style.filter = "blur(0px)";
                 dropDownMenu.style.transform = "scale(1)";
-                dropDownMenu.style.transition = "opacity " + fadeDuration + "s " + fadeCurveType;
+                dropDownMenu.style.transition = "opacity " + fadingDurationSeconds + "s " + fadeCurveType;
 
                 menuPositionCalculation();
                 setTimeout(() => {
