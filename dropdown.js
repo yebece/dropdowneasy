@@ -59,6 +59,23 @@ DropdownEasyConfig.FLAG_IS_SCALING_FADE_ENABLED         = 0x00000100;
 DropdownEasyConfig.FLAG_IS_FADING_ENABLED               = 0x00000200;
 DropdownEasyConfig.FLAG_IS_FADING_BLUR_ENABLED          = 0x00000400;
 
+/**
+ * Gets whether the specified flag is set or not.
+ * @param {number} flag One of DropdownEasyConfig.FLAG_* values.
+ */
+DropdownEasyConfig.prototype.getFlag = function(flag) {
+    return (this.flags & flag) == flag;
+};
+
+/**
+ * Sets the specified flag in the flags field.
+ * @param {number} flag One of DropdownEasyConfig.FLAG_* values.
+ * @param {boolean} value The value to set the flag to.
+ */
+DropdownEasyConfig.prototype.setFlag = function(flag, value) {
+    this.flags = (this.flags ^ flag) | (value ? flag : 0);
+};
+
 var dropdownConfig = new DropdownEasyConfig();
 
 // Dropdown Menus
