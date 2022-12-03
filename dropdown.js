@@ -159,7 +159,7 @@ function dismissMenu() {
 
     var dropDownMenu = document.getElementById("dropdownContainer").childNodes[0];
     var animation = selectAnimation();
-    
+
     animation.dismissMenu(dropDownMenu);
 
     setTimeout(() => {
@@ -331,11 +331,11 @@ function menumove(event) {
             } else if (ddeConfig.isFadingEnabled) {
                 dropDownOpenFading();
             } else {
-                dropDownOpenDefault();
+                dropDownOpenNone();
             }
 
 
-            function dropDownOpenDefault() {
+            function dropDownOpenNone() {
                 dropDownMenu.style.transition = "none";
                 dropDownMenu.style.filter = "blur(0px)";
                 dropDownMenu.style.opacity = "100%";
