@@ -16,79 +16,80 @@ for (var i = 0; i < all0.length; i++) {
     all0[i].style.left = "0";
 }
 
-var isDropdownEnabled = false; // old name: dropdownEnabled
-var shouldNotDismissAtTap = false; // old name: dontDismissAtTapEnabled, TODO: invert this variable!
-var shouldDismissWhileScrolling = false; // old name: dismissWhileScrolling
-var isSecondaryClickEnabled = false; // old name: secondaryClickEnabled
-var isFixedPositioningEnabled = false; // old name: fixedPosEnabled
+function DropdownEasyConfiguration() {
+    this.isDropdownEnabled = false; // old name: dropdownEnabled
+    this.shouldNotDismissAtTap = false; // old name: dontDismissAtTapEnabled, TODO: invert this variable!
+    this.shouldDismissWhileScrolling = false; // old name: dismissWhileScrolling
+    this.isSecondaryClickEnabled = false; // old name: secondaryClickEnabled
+    this.isFixedPositioningEnabled = false; // old name: fixedPosEnabled
+    this.isScalingEnabled = false; // old name: scalingEnabled
+    this.isScalingBounceEnabled = false; // old name: scalingBouncyEnabled
+    this.isScalingBlurEnabled = false; // old name: scalingBlurEnabled
+    this.isScalingFadeEnabled = false; // old name: scalingFadeEnabled
+    this.isFadingEnabled = false; // old name: fadeEnabled
+    this.isFadingBlurEnabled = false; // old name: fadeBlurEnabled
+    this.scalingDurationSeconds = 0.2;
+    this.scalingBounceDurationSeconds = 0.2;
+    this.scalingBlurDurationSeconds = 0.2;
+    this.scalingFadeDurationSeconds = 0.2;
+    this.fadingDurationSeconds = 0.2;
+    this.fadingBlurDurationSeconds = 0.2;
+    this.scalingCurveType = "";
+    this.scalingBouncyCurveType = "";
+    this.scalingBlurCurveType = "";
+    this.scalingFadeCurveType = "";
+    this.fadeCurveType = "";
+    this.fadeBlurCurveType = "";
+}
 
-var isScalingEnabled = false; // old name: scalingEnabled
-var isScalingBounceEnabled = false; // old name: scalingBouncyEnabled
-var isScalingBlurEnabled = false; // old name: scalingBlurEnabled
-var isScalingFadeEnabled = false; // old name: scalingFadeEnabled
-var isFadingEnabled = false; // old name: fadeEnabled
-var isFadingBlurEnabled = false; // old name: fadeBlurEnabled
-
-var scalingDurationSeconds = 0.2;
-var scalingBounceDurationSeconds = 0.2;
-var scalingBlurDurationSeconds = 0.2;
-var scalingFadeDurationSeconds = 0.2;
-var fadingDurationSeconds = 0.2;
-var fadingBlurDurationSeconds = 0.2;
-
-var scalingCurveType = "";
-var scalingBouncyCurveType = "";
-var scalingBlurCurveType = "";
-var scalingFadeCurveType = "";
-var fadeCurveType = "";
-var fadeBlurCurveType = "";
+var ddeConfig = new DropdownEasyConfiguration();
 
 // Dropdown Menus
 
 function dismissMenu() {
-    isDropdownEnabled = false;
+    ddeConfig.isDropdownEnabled = false;
 
     var dismissDuration = 0;
     var dropDownMenu = document.getElementById("dropdownContainer").childNodes[0];
 
-    if (isScalingBlurEnabled) {
-        dismissDuration = scalingBlurDurationSeconds;
+    if (ddeConfig.isScalingBlurEnabled) {
+        dismissDuration = ddeConfig.scalingBlurDurationSeconds;
         dropDownMenu.style.transform = "scale(0)";
         dropDownMenu.style.filter = "blur(30px)";
         setTimeout(() => {
             dropDownMenu.style.opacity = "0%";
-        }, scalingBlurDurationSeconds * 1000);
+        }, ddeConfig.scalingBlurDurationSeconds * 1000);
 
-    } else if (isScalingBounceEnabled) {
-        dismissDuration = scalingBounceDurationSeconds;
+    } else if (ddeConfig.isScalingBounceEnabled) {
+        dismissDuration = ddeConfig.scalingBounceDurationSeconds;
         dropDownMenu.style.transform = "scale(0)";
 
-    } else if (isFadingBlurEnabled) {
-        dismissDuration = fadingBlurDurationSeconds;
+    } else if (ddeConfig.isFadingBlurEnabled) {
+        dismissDuration = ddeConfig.fadingBlurDurationSeconds;
         dropDownMenu.style.opacity = "0%";
         dropDownMenu.style.filter = "blur(30px)";
         setTimeout(() => {
             dropDownMenu.style.transform = "scale(0)";
-        }, fadingBlurDurationSeconds * 1000);
+        }, ddeConfig.fadingBlurDurationSeconds * 1000);
 
-    } else if (isScalingFadeEnabled) {
-        dismissDuration = scalingFadeDurationSeconds;
+    } else if (ddeConfig.isScalingFadeEnabled) {
+        dismissDuration = ddeConfig.scalingFadeDurationSeconds;
         dropDownMenu.style.opacity = "0%";
         dropDownMenu.style.transform = "scale(0)";
         setTimeout(() => {
             dropDownMenu.style.filter = "blur(30px)";
-        }, scalingFadeDurationSeconds * 1000);
+        }, ddeConfig.scalingFadeDurationSeconds * 1000);
 
-    } else if (isScalingEnabled) {
-        dismissDuration = scalingDurationSeconds;
+    } else if (ddeConfig.isScalingEnabled) {
+        dismissDuration = ddeConfig.scalingDurationSeconds;
         dropDownMenu.style.transform = "scale(0)";
 
-    } else if (isFadingEnabled) {
-        dismissDuration = fadingDurationSeconds;
+    } else if (ddeConfig.isFadingEnabled) {
+        dismissDuration = ddeConfig.fadingDurationSeconds;
         dropDownMenu.style.opacity = "0%";
         setTimeout(() => {
             dropDownMenu.style.transform = "scale(0)";
-        }, fadingDurationSeconds * 1000);
+        }, ddeConfig.fadingDurationSeconds * 1000);
 
     } else {
         dropDownMenu.style.transition = "none";
@@ -98,16 +99,16 @@ function dismissMenu() {
     }
 
     setTimeout(() => {
-        shouldNotDismissAtTap = false;
-        isScalingEnabled = false;
-        isScalingBounceEnabled = false;
-        isScalingBlurEnabled = false;
-        isScalingFadeEnabled = false;
-        isFadingEnabled = false;
-        isFadingBlurEnabled = false;
-        isSecondaryClickEnabled = false;
-        isFixedPositioningEnabled = false;
-        shouldDismissWhileScrolling = false;
+        ddeConfig.shouldNotDismissAtTap = false;
+        ddeConfig.isScalingEnabled = false;
+        ddeConfig.isScalingBounceEnabled = false;
+        ddeConfig.isScalingBlurEnabled = false;
+        ddeConfig.isScalingFadeEnabled = false;
+        ddeConfig.isFadingEnabled = false;
+        ddeConfig.isFadingBlurEnabled = false;
+        ddeConfig.isSecondaryClickEnabled = false;
+        ddeConfig.isFixedPositioningEnabled = false;
+        ddeConfig.shouldDismissWhileScrolling = false;
 
         document.getElementById("dropdownn").innerHTML += dropDownMenu.outerHTML;
         dropDownMenu.outerHTML = "";
@@ -117,25 +118,25 @@ function dismissMenu() {
 
 function menumove(event) {
     if (event.target.classList.contains("dont-dismiss-at-tap")) {
-        shouldNotDismissAtTap = true;
+        ddeConfig.shouldNotDismissAtTap = true;
     }
 
     if (event.target.classList.contains("dismiss-while-scrolling")) {
-        shouldDismissWhileScrolling = true;
+        ddeConfig.shouldDismissWhileScrolling = true;
     }
 
     if (event.target.classList.contains("secondary-click")) {
-        isSecondaryClickEnabled = true;
+        ddeConfig.isSecondaryClickEnabled = true;
     }
 
     if (event.target.classList.contains("fixed-pos")) {
-        isFixedPositioningEnabled = true;
+        ddeConfig.isFixedPositioningEnabled = true;
     }
 
     // Animations
 
     if (event.target.classList.toString().indexOf("scaling") > -1) {
-        isScalingEnabled = true;
+        ddeConfig.isScalingEnabled = true;
         
         if(event.target.classList.toString().indexOf("@") > -1){
         var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
@@ -143,73 +144,73 @@ function menumove(event) {
 
         var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
 
-        scalingDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
-        scalingCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
+        ddeConfig.scalingDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
+        ddeConfig.scalingCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
     }
 
     if (event.target.classList.toString().indexOf("scaling-bouncy") > -1) {
-        isScalingBounceEnabled = true;
+        ddeConfig.isScalingBounceEnabled = true;
 
         if(event.target.classList.toString().indexOf("@") > -1){
         var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
 
         var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
 
-        scalingBounceDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
-        scalingBouncyCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
+        ddeConfig.scalingBounceDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
+        ddeConfig.scalingBouncyCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
     }
 
     if (event.target.classList.toString().indexOf("scaling-blur") > -1) {
-        isScalingBlurEnabled = true;
+        ddeConfig.isScalingBlurEnabled = true;
 
         if(event.target.classList.toString().indexOf("@") > -1){
             var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
 
         var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
         
-        scalingBlurDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
-        scalingBlurCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
+        ddeConfig.scalingBlurDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
+        ddeConfig.scalingBlurCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
     }
 
     if (event.target.classList.toString().indexOf("scaling-fade") > -1) {
-        isScalingFadeEnabled = true;
+        ddeConfig.isScalingFadeEnabled = true;
 
         if(event.target.classList.toString().indexOf("@") > -1){
             var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
 
         var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
         
-        scalingFadeDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
-        scalingFadeCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
+        ddeConfig.scalingFadeDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
+        ddeConfig.scalingFadeCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
     }
 
     if (event.target.classList.toString().indexOf("fade") > -1) {
-        isFadingEnabled = true;
+        ddeConfig.isFadingEnabled = true;
 
         if(event.target.classList.toString().indexOf("@") > -1){
             var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
 
         var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
         
-        fadingDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
-        fadeCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
+        ddeConfig.fadingDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
+        ddeConfig.fadeCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
     }
 
     if (event.target.classList.toString().indexOf("fade-blur") > -1) {
-        isFadingBlurEnabled = true;
+        ddeConfig.isFadingBlurEnabled = true;
 
         if(event.target.classList.toString().indexOf("@") > -1){
             var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
 
         var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
         
-        fadingBlurDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
-        fadeBlurCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
+        ddeConfig.fadingBlurDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
+        ddeConfig.fadeBlurCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
     }
 
@@ -223,11 +224,11 @@ function menumove(event) {
 
             var dropDownMenu = document.getElementById("dropdownContainer").childNodes[0];
 
-            if (isSecondaryClickEnabled) {
+            if (ddeConfig.isSecondaryClickEnabled) {
                 dropDownMenu.classList.add("secondary-click");
             }
 
-            if (isFixedPositioningEnabled) {
+            if (ddeConfig.isFixedPositioningEnabled) {
                 dropDownMenu.style.position = "fixed";
             }
 
@@ -235,7 +236,7 @@ function menumove(event) {
                 var posX = event.pageX;
                 var posY = event.pageY;
 
-                if (isFixedPositioningEnabled) {
+                if (ddeConfig.isFixedPositioningEnabled) {
                     posX = event.clientX;
                     posY = event.clientY;
                 }
@@ -268,8 +269,8 @@ function menumove(event) {
                 }
             }
 
-            if (isScalingBounceEnabled) {
-                dropDownMenu.style.transition = "transform " + scalingBounceDurationSeconds + "s " + scalingBouncyCurveType;
+            if (ddeConfig.isScalingBounceEnabled) {
+                dropDownMenu.style.transition = "transform " + ddeConfig.scalingBounceDurationSeconds + "s " + ddeConfig.scalingBouncyCurveType;
                 dropDownMenu.style.filter = "blur(0px)";
                 dropDownMenu.style.opacity = "100%";
 
@@ -278,12 +279,12 @@ function menumove(event) {
                     dropDownMenu.style.transform = "scale(1.01)";
                     setTimeout(() => {
                         dropDownMenu.style.transform = "scale(1)";
-                    }, scalingBounceDurationSeconds * 1000 + 50);
+                    }, ddeConfig.scalingBounceDurationSeconds * 1000 + 50);
                 }, 0.1);
 
-            } else if (isScalingBlurEnabled) {
+            } else if (ddeConfig.isScalingBlurEnabled) {
                 dropDownMenu.style.opacity = "100%";
-                dropDownMenu.style.transition = "filter " + scalingBlurDurationSeconds + "s " + scalingBlurCurveType + ", transform " + scalingBlurDurationSeconds + "s " + scalingBlurCurveType;
+                dropDownMenu.style.transition = "filter " + ddeConfig.scalingBlurDurationSeconds + "s " + ddeConfig.scalingBlurCurveType + ", transform " + ddeConfig.scalingBlurDurationSeconds + "s " + ddeConfig.scalingBlurCurveType;
 
                 menuPositionCalculation();
                 setTimeout(() => {
@@ -291,9 +292,9 @@ function menumove(event) {
                     dropDownMenu.style.filter = "blur(0px)";
                 }, 0.1);
 
-            } else if (isScalingFadeEnabled) {
+            } else if (ddeConfig.isScalingFadeEnabled) {
                 dropDownMenu.style.filter = "blur(0px)";
-                dropDownMenu.style.transition = "opacity " + scalingFadeDurationSeconds + "s " + scalingFadeCurveType + ", transform " + scalingFadeDurationSeconds + "s " + scalingFadeCurveType;
+                dropDownMenu.style.transition = "opacity " + ddeConfig.scalingFadeDurationSeconds + "s " + ddeConfig.scalingFadeCurveType + ", transform " + ddeConfig.scalingFadeDurationSeconds + "s " + ddeConfig.scalingFadeCurveType;
 
                 menuPositionCalculation();
                 setTimeout(() => {
@@ -301,19 +302,19 @@ function menumove(event) {
                     dropDownMenu.style.transform = "scale(1)";
                 }, 0.1);
 
-            } else if (isScalingEnabled) {
+            } else if (ddeConfig.isScalingEnabled) {
                 dropDownMenu.style.filter = "blur(0px)";
                 dropDownMenu.style.opacity = "100%";
-                dropDownMenu.style.transition = "transform " + scalingDurationSeconds + "s " + scalingCurveType;
+                dropDownMenu.style.transition = "transform " + ddeConfig.scalingDurationSeconds + "s " + ddeConfig.scalingCurveType;
 
                 menuPositionCalculation();
                 setTimeout(() => {
                     dropDownMenu.style.transform = "scale(1)";
                 }, 0.1);
 
-            } else if (isFadingBlurEnabled) {
+            } else if (ddeConfig.isFadingBlurEnabled) {
                 dropDownMenu.style.transform = "scale(1)";
-                dropDownMenu.style.transition = "filter " + fadingBlurDurationSeconds + "s " + fadeBlurCurveType + ", opacity " + fadingBlurDurationSeconds + "s " + fadeBlurCurveType;
+                dropDownMenu.style.transition = "filter " + ddeConfig.fadingBlurDurationSeconds + "s " + ddeConfig.fadeBlurCurveType + ", opacity " + ddeConfig.fadingBlurDurationSeconds + "s " + ddeConfig.fadeBlurCurveType;
 
                 menuPositionCalculation();
                 setTimeout(() => {
@@ -321,10 +322,10 @@ function menumove(event) {
                     dropDownMenu.style.filter = "blur(0px)";
                 }, 0.1);
 
-            } else if (isFadingEnabled) {
+            } else if (ddeConfig.isFadingEnabled) {
                 dropDownMenu.style.filter = "blur(0px)";
                 dropDownMenu.style.transform = "scale(1)";
-                dropDownMenu.style.transition = "opacity " + fadingDurationSeconds + "s " + fadeCurveType;
+                dropDownMenu.style.transition = "opacity " + ddeConfig.fadingDurationSeconds + "s " + ddeConfig.fadeCurveType;
 
                 menuPositionCalculation();
                 setTimeout(() => {
@@ -353,23 +354,25 @@ function menumove(event) {
     }
     console.log(nodes.join());
 
-    if (event.target.classList.contains("dropdown") == true || event.target.classList.contains("dropdown-menu") == true || nodes.join().includes("dropdown-menu") == true && event.target.classList.contains("dismiss-button") == false) {
-        if (!isDropdownEnabled) {
-            isDropdownEnabled = true;
+    if (event.target.classList.contains("dropdown")
+     || event.target.classList.contains("dropdown-menu") 
+     || nodes.join().includes("dropdown-menu") && !event.target.classList.contains("dismiss-button")) {
+        if (!ddeConfig.isDropdownEnabled) {
+            ddeConfig.isDropdownEnabled = true;
 
-            if (!isSecondaryClickEnabled && event.button == 0) {
+            if (!ddeConfig.isSecondaryClickEnabled && event.button == 0) {
                 openMenu();
-            } else if (isSecondaryClickEnabled && event.button == 2) {
+            } else if (ddeConfig.isSecondaryClickEnabled && event.button == 2) {
                 openMenu();
-            } else if (isSecondaryClickEnabled && event.button == 0) {
+            } else if (ddeConfig.isSecondaryClickEnabled && event.button == 0) {
                 dismissMenu();
-            } else if (!isSecondaryClickEnabled && event.button == 2) {
+            } else if (!ddeConfig.isSecondaryClickEnabled && event.button == 2) {
                 dismissMenu();
             }
 
-        } else if (!shouldNotDismissAtTap) {
+        } else if (!ddeConfig.shouldNotDismissAtTap) {
             dismissMenu();
-        } else if (isSecondaryClickEnabled && event.button == 0 && !nodes.join().includes("dropdown-menu")) {
+        } else if (ddeConfig.isSecondaryClickEnabled && event.button == 0 && !nodes.join().includes("dropdown-menu")) {
             dismissMenu();
         }
 
@@ -379,41 +382,32 @@ function menumove(event) {
 }
 
 window.onscroll = function(e) {
-    if (shouldDismissWhileScrolling) {
+    if (ddeConfig.shouldDismissWhileScrolling) {
         dismissMenu();
     }
 }
 
 function secondaryClick(event) {
     if (event.target.parentElement.classList.contains("secondary-click") || event.target.classList.contains("secondary-click")) {
-        isSecondaryClickEnabled = true;
+        ddeConfig.isSecondaryClickEnabled = true;
         event.preventDefault();
     }
 
 }
 
 function log(event) {
-    if (event.target.classList.contains("dropdown") == false && !isDropdownEnabled) {
-        shouldNotDismissAtTap = false;
-        isScalingEnabled = false;
-        isScalingBounceEnabled = false;
-        isScalingBlurEnabled = false;
-        isScalingFadeEnabled = false;
-        isFadingEnabled = false;
-        isFadingBlurEnabled = false;
-        isSecondaryClickEnabled = false;
-        isFixedPositioningEnabled = false;
+    if (!event.target.classList.contains("dropdown") && !ddeConfig.isDropdownEnabled) {
+        ddeConfig.shouldNotDismissAtTap = false;
+        ddeConfig.isScalingEnabled = false;
+        ddeConfig.isScalingBounceEnabled = false;
+        ddeConfig.isScalingBlurEnabled = false;
+        ddeConfig.isScalingFadeEnabled = false;
+        ddeConfig.isFadingEnabled = false;
+        ddeConfig.isFadingBlurEnabled = false;
+        ddeConfig.isSecondaryClickEnabled = false;
+        ddeConfig.isFixedPositioningEnabled = false;
     }
 
     console.log(event.target.classList.toString());
-    console.log("dropdownEnabled: " + isDropdownEnabled);
-    console.log("dontDismissAtTapEnabled: " + shouldNotDismissAtTap);
-    console.log("scalingEnabled: " + isScalingEnabled);
-    console.log("scalingBouncyEnabled: " + isScalingBounceEnabled);
-    console.log("scalingBlurEnabled: " + isScalingBlurEnabled);
-    console.log("scalingFadeEnabled: " + isScalingFadeEnabled);
-    console.log("fadeEnabled: " + isFadingEnabled);
-    console.log("fadeBlurEnabled: " + isFadingBlurEnabled);
-    console.log("secondaryClickEnabled: " + isSecondaryClickEnabled);
-    console.log("fixedPosEnabled: " + isFixedPositioningEnabled);
+    console.table(ddeConfig);
 }
