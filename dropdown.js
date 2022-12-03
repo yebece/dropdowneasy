@@ -19,7 +19,7 @@ for (var i = 0; i < all0.length; i++) {
 // Animations definitions
 var ddeAnimations = {
     none: {
-        dismissDurationSeconds: 0,
+        duration: 0,
         curveType: "",
 
         dismissMenu: function(dropDownMenu) {
@@ -38,7 +38,7 @@ var ddeAnimations = {
     },
 
     scalingBlur: { 
-        dismissDurationSeconds: 0.2,
+        duration: 0.2,
         curveType: "",
 
         dismissMenu: function(dropDownMenu) {
@@ -46,14 +46,14 @@ var ddeAnimations = {
             dropDownMenu.style.filter = "blur(30px)";
             setTimeout(() => {
                 dropDownMenu.style.opacity = "0%";
-            }, this.dismissDurationSeconds * 1000);
+            }, this.duration * 1000);
         },
 
         dropDownOpen: function(dropDownMenu) {
             dropDownMenu.style.opacity = "100%";
             dropDownMenu.style.transition = 
-                "filter " + this.dismissDurationSeconds + "s " + this.curveType + 
-                ", transform " + this.dismissDurationSeconds + "s " + this.curveType;
+                "filter " + this.duration + "s " + this.curveType + 
+                ", transform " + this.duration + "s " + this.curveType;
 
             setTimeout(() => {
                 dropDownMenu.style.transform = "scale(1)";
@@ -63,7 +63,7 @@ var ddeAnimations = {
     },
 
     scalingBounce: { 
-        dismissDurationSeconds: 0.2,
+        duration: 0.2,
         curveType: "",
 
         dismissMenu: function(dropDownMenu) {
@@ -71,7 +71,7 @@ var ddeAnimations = {
         },
 
         dropDownOpen: function(dropDownMenu) {
-            dropDownMenu.style.transition = "transform " + this.dismissDurationSeconds + "s " + this.curveType;
+            dropDownMenu.style.transition = "transform " + this.duration + "s " + this.curveType;
             dropDownMenu.style.filter = "blur(0px)";
             dropDownMenu.style.opacity = "100%";
 
@@ -79,13 +79,13 @@ var ddeAnimations = {
                 dropDownMenu.style.transform = "scale(1.01)";
                 setTimeout(() => {
                     dropDownMenu.style.transform = "scale(1)";
-                }, this.dismissDurationSeconds * 1000 + 50);
+                }, this.duration * 1000 + 50);
             }, 0.1);
         }
     },
 
     fadingBlur: { 
-        dismissDurationSeconds: 0.2,
+        duration: 0.2,
         curveType: "",
 
         dismissMenu: function(dropDownMenu) {
@@ -93,14 +93,14 @@ var ddeAnimations = {
             dropDownMenu.style.filter = "blur(30px)";
             setTimeout(() => {
                 dropDownMenu.style.transform = "scale(0)";
-            }, this.dismissDurationSeconds * 1000);
+            }, this.duration * 1000);
         },
 
         dropDownOpen: function(dropDownMenu) {
             dropDownMenu.style.transform = "scale(1)";
             dropDownMenu.style.transition = 
-                "filter " + this.dismissDurationSeconds + "s " + this.curveType + 
-                ", opacity " + this.dismissDurationSeconds + "s " + this.curveType;
+                "filter " + this.duration + "s " + this.curveType + 
+                ", opacity " + this.duration + "s " + this.curveType;
             
             setTimeout(() => {
                 dropDownMenu.style.opacity = "100%";
@@ -110,7 +110,7 @@ var ddeAnimations = {
     },
 
     scalingFade: { 
-        dismissDurationSeconds: 0.2, 
+        duration: 0.2, 
         curveType: "",
 
         dismissMenu: function(dropDownMenu) {
@@ -118,14 +118,14 @@ var ddeAnimations = {
             dropDownMenu.style.transform = "scale(0)";
             setTimeout(() => {
                 dropDownMenu.style.filter = "blur(30px)";
-            }, this.dismissDurationSeconds * 1000);
+            }, this.duration * 1000);
         },
 
         dropDownOpen: function(dropDownMenu) {
             dropDownMenu.style.filter = "blur(0px)";
             dropDownMenu.style.transition = 
-                "opacity " + this.dismissDurationSeconds + "s " + this.curveType + 
-                ", transform " + this.dismissDurationSeconds + "s " + this.curveType;
+                "opacity " + this.duration + "s " + this.curveType + 
+                ", transform " + this.duration + "s " + this.curveType;
 
             setTimeout(() => {
                 dropDownMenu.style.opacity = "100%";
@@ -135,7 +135,7 @@ var ddeAnimations = {
     },
 
     scaling: { 
-        dismissDurationSeconds: 0.2,
+        duration: 0.2,
         curveType: "",
 
         dismissMenu: function(dropDownMenu) {
@@ -145,7 +145,7 @@ var ddeAnimations = {
         dropDownOpen: function(dropDownMenu) {
             dropDownMenu.style.filter = "blur(0px)";
             dropDownMenu.style.opacity = "100%";
-            dropDownMenu.style.transition = "transform " + this.dismissDurationSeconds + "s " + this.curveType;
+            dropDownMenu.style.transition = "transform " + this.duration + "s " + this.curveType;
             
             setTimeout(() => {
                 dropDownMenu.style.transform = "scale(1)";
@@ -154,20 +154,20 @@ var ddeAnimations = {
     },
 
     fading: { 
-        dismissDurationSeconds: 0.2,
+        duration: 0.2,
         curveType: "",
 
         dismissMenu: function(dropDownMenu) {
             dropDownMenu.style.opacity = "0%";
             setTimeout(() => {
                 dropDownMenu.style.transform = "scale(0)";
-            }, this.dismissDurationSeconds * 1000);
+            }, this.duration * 1000);
         },
 
         dropDownOpen: function(dropDownMenu) {
             dropDownMenu.style.filter = "blur(0px)";
             dropDownMenu.style.transform = "scale(1)";
-            dropDownMenu.style.transition = "opacity " + this.dismissDurationSeconds + "s " + this.curveType;
+            dropDownMenu.style.transition = "opacity " + this.duration + "s " + this.curveType;
 
             setTimeout(() => {
                 dropDownMenu.style.opacity = "100%";
@@ -251,7 +251,7 @@ function dismissMenu() {
         document.getElementById("dropdownn").innerHTML += dropDownMenu.outerHTML;
         dropDownMenu.outerHTML = "";
         document.getElementById("dropdownn").setAttribute("id", "");
-    }, animation.dismissDurationSeconds * 1000 + 50);
+    }, animation.duration * 1000 + 50);
 }
 
 function menumove(event) {
