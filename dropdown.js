@@ -293,6 +293,86 @@ function menumove(event) {
             }
 
             if (ddeConfig.isScalingBounceEnabled) {
+                dropDownOpenScalingBounce();
+            } else if (ddeConfig.isScalingBlurEnabled) {
+                dropDownOpenScalingBlur();
+            } else if (ddeConfig.isScalingFadeEnabled) {
+                dropDownOpenScalingFade();
+            } else if (ddeConfig.isScalingEnabled) {
+                dropDownOpenScaling();
+            } else if (ddeConfig.isFadingBlurEnabled) {
+                dropDownOpenFadingBlur();
+            } else if (ddeConfig.isFadingEnabled) {
+                dropDownOpenFading();
+            } else {
+                dropDownOpenDefault();
+            }
+
+
+            function dropDownOpenDefault() {
+                dropDownMenu.style.transition = "none";
+                dropDownMenu.style.filter = "blur(0px)";
+                dropDownMenu.style.opacity = "100%";
+                dropDownMenu.style.transform = "scale(1)";
+                menuPositionCalculation();
+            }
+
+            function dropDownOpenFading() {
+                dropDownMenu.style.filter = "blur(0px)";
+                dropDownMenu.style.transform = "scale(1)";
+                dropDownMenu.style.transition = "opacity " + ddeConfig.fadingDurationSeconds + "s " + ddeConfig.fadeCurveType;
+
+                menuPositionCalculation();
+                setTimeout(() => {
+                    dropDownMenu.style.opacity = "100%";
+                }, 0.1);
+            }
+
+            function dropDownOpenFadingBlur() {
+                dropDownMenu.style.transform = "scale(1)";
+                dropDownMenu.style.transition = "filter " + ddeConfig.fadingBlurDurationSeconds + "s " + ddeConfig.fadeBlurCurveType + ", opacity " + ddeConfig.fadingBlurDurationSeconds + "s " + ddeConfig.fadeBlurCurveType;
+
+                menuPositionCalculation();
+                setTimeout(() => {
+                    dropDownMenu.style.opacity = "100%";
+                    dropDownMenu.style.filter = "blur(0px)";
+                }, 0.1);
+            }
+
+            function dropDownOpenScaling() {
+                dropDownMenu.style.filter = "blur(0px)";
+                dropDownMenu.style.opacity = "100%";
+                dropDownMenu.style.transition = "transform " + ddeConfig.scalingDurationSeconds + "s " + ddeConfig.scalingCurveType;
+
+                menuPositionCalculation();
+                setTimeout(() => {
+                    dropDownMenu.style.transform = "scale(1)";
+                }, 0.1);
+            }
+
+            function dropDownOpenScalingFade() {
+                dropDownMenu.style.filter = "blur(0px)";
+                dropDownMenu.style.transition = "opacity " + ddeConfig.scalingFadeDurationSeconds + "s " + ddeConfig.scalingFadeCurveType + ", transform " + ddeConfig.scalingFadeDurationSeconds + "s " + ddeConfig.scalingFadeCurveType;
+
+                menuPositionCalculation();
+                setTimeout(() => {
+                    dropDownMenu.style.opacity = "100%";
+                    dropDownMenu.style.transform = "scale(1)";
+                }, 0.1);
+            }
+
+            function dropDownOpenScalingBlur() {
+                dropDownMenu.style.opacity = "100%";
+                dropDownMenu.style.transition = "filter " + ddeConfig.scalingBlurDurationSeconds + "s " + ddeConfig.scalingBlurCurveType + ", transform " + ddeConfig.scalingBlurDurationSeconds + "s " + ddeConfig.scalingBlurCurveType;
+
+                menuPositionCalculation();
+                setTimeout(() => {
+                    dropDownMenu.style.transform = "scale(1)";
+                    dropDownMenu.style.filter = "blur(0px)";
+                }, 0.1);
+            }
+
+            function dropDownOpenScalingBounce() {
                 dropDownMenu.style.transition = "transform " + ddeConfig.scalingBounceDurationSeconds + "s " + ddeConfig.scalingBouncyCurveType;
                 dropDownMenu.style.filter = "blur(0px)";
                 dropDownMenu.style.opacity = "100%";
@@ -304,65 +384,7 @@ function menumove(event) {
                         dropDownMenu.style.transform = "scale(1)";
                     }, ddeConfig.scalingBounceDurationSeconds * 1000 + 50);
                 }, 0.1);
-
-            } else if (ddeConfig.isScalingBlurEnabled) {
-                dropDownMenu.style.opacity = "100%";
-                dropDownMenu.style.transition = "filter " + ddeConfig.scalingBlurDurationSeconds + "s " + ddeConfig.scalingBlurCurveType + ", transform " + ddeConfig.scalingBlurDurationSeconds + "s " + ddeConfig.scalingBlurCurveType;
-
-                menuPositionCalculation();
-                setTimeout(() => {
-                    dropDownMenu.style.transform = "scale(1)";
-                    dropDownMenu.style.filter = "blur(0px)";
-                }, 0.1);
-
-            } else if (ddeConfig.isScalingFadeEnabled) {
-                dropDownMenu.style.filter = "blur(0px)";
-                dropDownMenu.style.transition = "opacity " + ddeConfig.scalingFadeDurationSeconds + "s " + ddeConfig.scalingFadeCurveType + ", transform " + ddeConfig.scalingFadeDurationSeconds + "s " + ddeConfig.scalingFadeCurveType;
-
-                menuPositionCalculation();
-                setTimeout(() => {
-                    dropDownMenu.style.opacity = "100%";
-                    dropDownMenu.style.transform = "scale(1)";
-                }, 0.1);
-
-            } else if (ddeConfig.isScalingEnabled) {
-                dropDownMenu.style.filter = "blur(0px)";
-                dropDownMenu.style.opacity = "100%";
-                dropDownMenu.style.transition = "transform " + ddeConfig.scalingDurationSeconds + "s " + ddeConfig.scalingCurveType;
-
-                menuPositionCalculation();
-                setTimeout(() => {
-                    dropDownMenu.style.transform = "scale(1)";
-                }, 0.1);
-
-            } else if (ddeConfig.isFadingBlurEnabled) {
-                dropDownMenu.style.transform = "scale(1)";
-                dropDownMenu.style.transition = "filter " + ddeConfig.fadingBlurDurationSeconds + "s " + ddeConfig.fadeBlurCurveType + ", opacity " + ddeConfig.fadingBlurDurationSeconds + "s " + ddeConfig.fadeBlurCurveType;
-
-                menuPositionCalculation();
-                setTimeout(() => {
-                    dropDownMenu.style.opacity = "100%";
-                    dropDownMenu.style.filter = "blur(0px)";
-                }, 0.1);
-
-            } else if (ddeConfig.isFadingEnabled) {
-                dropDownMenu.style.filter = "blur(0px)";
-                dropDownMenu.style.transform = "scale(1)";
-                dropDownMenu.style.transition = "opacity " + ddeConfig.fadingDurationSeconds + "s " + ddeConfig.fadeCurveType;
-
-                menuPositionCalculation();
-                setTimeout(() => {
-                    dropDownMenu.style.opacity = "100%";
-                }, 0.1);
-
-            } else {
-                dropDownMenu.style.transition = "none";
-                dropDownMenu.style.filter = "blur(0px)";
-                dropDownMenu.style.opacity = "100%";
-                dropDownMenu.style.transform = "scale(1)";
-                menuPositionCalculation();
             }
-
         }
         dropDownOpen(event.target.childNodes[1]);
     }
