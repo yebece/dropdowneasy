@@ -42,6 +42,19 @@ function DropdownEasyConfiguration() {
     this.fadeBlurCurveType = "";
 }
 
+DropdownEasyConfiguration.prototype.resetState = function() {
+    this.shouldNotDismissAtTap = false;
+    this.isScalingEnabled = false;
+    this.isScalingBounceEnabled = false;
+    this.isScalingBlurEnabled = false;
+    this.isScalingFadeEnabled = false;
+    this.isFadingEnabled = false;
+    this.isFadingBlurEnabled = false;
+    this.isSecondaryClickEnabled = false;
+    this.isFixedPositioningEnabled = false;
+    this.shouldDismissWhileScrolling = false;
+};
+
 var ddeConfig = new DropdownEasyConfiguration();
 
 // Dropdown Menus
@@ -76,16 +89,7 @@ function dismissMenu() {
     }
 
     setTimeout(() => {
-        ddeConfig.shouldNotDismissAtTap = false;
-        ddeConfig.isScalingEnabled = false;
-        ddeConfig.isScalingBounceEnabled = false;
-        ddeConfig.isScalingBlurEnabled = false;
-        ddeConfig.isScalingFadeEnabled = false;
-        ddeConfig.isFadingEnabled = false;
-        ddeConfig.isFadingBlurEnabled = false;
-        ddeConfig.isSecondaryClickEnabled = false;
-        ddeConfig.isFixedPositioningEnabled = false;
-        ddeConfig.shouldDismissWhileScrolling = false;
+        ddeConfig.resetState();
 
         document.getElementById("dropdownn").innerHTML += dropDownMenu.outerHTML;
         dropDownMenu.outerHTML = "";
@@ -441,16 +445,11 @@ function secondaryClick(event) {
 }
 
 function log(event) {
+    var shouldDismissWhileScrolling = ddeConfig.shouldDismissWhileScrolling;
+
     if (!event.target.classList.contains("dropdown") && !ddeConfig.isDropdownEnabled) {
-        ddeConfig.shouldNotDismissAtTap = false;
-        ddeConfig.isScalingEnabled = false;
-        ddeConfig.isScalingBounceEnabled = false;
-        ddeConfig.isScalingBlurEnabled = false;
-        ddeConfig.isScalingFadeEnabled = false;
-        ddeConfig.isFadingEnabled = false;
-        ddeConfig.isFadingBlurEnabled = false;
-        ddeConfig.isSecondaryClickEnabled = false;
-        ddeConfig.isFixedPositioningEnabled = false;
+        ddeConfig.resetState();
+        ddeConfig.shouldDismissWhileScrolling = shouldDismissWhileScrolling;
     }
 
     console.log(event.target.classList.toString());
