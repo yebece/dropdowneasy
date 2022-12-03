@@ -388,57 +388,9 @@ function menumove(event) {
                 }
             }
 
-            if (ddeConfig.isScalingBounceEnabled) {
-                dropDownOpenScalingBounce();
-                menuPositionCalculation();
-            } else if (ddeConfig.isScalingBlurEnabled) {
-                dropDownOpenScalingBlur();
-                menuPositionCalculation();
-            } else if (ddeConfig.isScalingFadeEnabled) {
-                dropDownOpenScalingFade();
-                menuPositionCalculation();
-            } else if (ddeConfig.isScalingEnabled) {
-                dropDownOpenScaling();
-                menuPositionCalculation();
-            } else if (ddeConfig.isFadingBlurEnabled) {
-                dropDownOpenFadingBlur();
-                menuPositionCalculation();
-            } else if (ddeConfig.isFadingEnabled) {
-                dropDownOpenFading();
-                menuPositionCalculation();
-            } else {
-                dropDownOpenNone();
-                menuPositionCalculation();
-            }
-
-
-            function dropDownOpenNone() {
-                ddeAnimations.none.dropDownOpen(dropDownMenu);
-            }
-
-            function dropDownOpenFading() {
-                ddeAnimations.fading.dropDownOpen(dropDownMenu);
-            }
-
-            function dropDownOpenFadingBlur() {
-                ddeAnimations.fadingBlur.dropDownOpen(dropDownMenu);
-            }
-
-            function dropDownOpenScaling() {
-                ddeAnimations.scaling.dropDownOpen(dropDownMenu);
-            }
-
-            function dropDownOpenScalingFade() {
-                ddeAnimations.scalingFade.dropDownOpen(dropDownMenu);
-            }
-
-            function dropDownOpenScalingBlur() {
-                ddeAnimations.scalingBlur.dropDownOpen(dropDownMenu);
-            }
-
-            function dropDownOpenScalingBounce() {
-                ddeAnimations.scalingBounce.dropDownOpen(dropDownMenu);
-            }
+            var animation = selectAnimation();
+            animation.dropDownOpen(dropDownMenu);
+            menuPositionCalculation();
         }
         dropDownOpen(event.target.childNodes[1]);
     }
