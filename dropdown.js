@@ -16,19 +16,24 @@ for (var i = 0; i < all0.length; i++) {
     all0[i].style.left = "0";
 }
 
-function DropdownEasyConfig() {
-    this.isDropdownEnabled = false;
-    this.shouldNotDismissAtTap = false; // TODO: invert this variable!
-    this.shouldDismissWhileScrolling = false;
-    this.isSecondaryClickEnabled = false;
-    this.isFixedPositioningEnabled = false;
 
-    this.isScalingEnabled = false;
-    this.isScalingBounceEnabled = false;
-    this.isScalingBlurEnabled = false;
-    this.isScalingFadeEnabled = false;
-    this.isFadingEnabled = false;
-    this.isFadingBlurEnabled = false;
+
+function DropdownEasyConfig() {
+    this.flags = 0;
+
+    defineBitField.call(this, [
+        "isDropdownEnabled",
+        "shouldNotDismissAtTap",
+        "shouldDismissWhileScrolling",
+        "isSecondaryClickEnabled",
+        "isFixedPositioningEnabled",
+        "isScalingEnabled",
+        "isScalingBounceEnabled",
+        "isScalingBlurEnabled",
+        "isScalingFadeEnabled",
+        "isFadingEnabled",
+        "isFadingBlurEnabled"
+    ], "flags");
 
     this.scalingDurationSeconds = 0.2;
     this.scalingBounceDurationSeconds = 0.2;
@@ -43,38 +48,7 @@ function DropdownEasyConfig() {
     this.scalingFadeCurveType = "";
     this.fadeCurveType = "";
     this.fadeBlurCurveType = "";
-
-    this.flags = 0;
 }
-
-DropdownEasyConfig.FLAG_IS_DROPDOWN_ENABLED             = 0x00000001;
-DropdownEasyConfig.FLAG_SHOULD_NOT_DISMISS_AT_TAP       = 0x00000002;
-DropdownEasyConfig.FLAG_SHOULD_DISMISS_WHILE_SCROLLING  = 0x00000004;
-DropdownEasyConfig.FLAG_IS_SECONDARY_CLICK_ENABLED      = 0x00000008;
-DropdownEasyConfig.FLAG_IS_FIXED_POSITIONING_ENABLED    = 0x00000010;
-DropdownEasyConfig.FLAG_IS_SCALING_ENABLED              = 0x00000020;
-DropdownEasyConfig.FLAG_IS_SCALING_BOUNCE_ENABLED       = 0x00000040;
-DropdownEasyConfig.FLAG_IS_SCALING_BLUR_ENABLED         = 0x00000080;
-DropdownEasyConfig.FLAG_IS_SCALING_FADE_ENABLED         = 0x00000100;
-DropdownEasyConfig.FLAG_IS_FADING_ENABLED               = 0x00000200;
-DropdownEasyConfig.FLAG_IS_FADING_BLUR_ENABLED          = 0x00000400;
-
-/**
- * Gets whether the specified flag is set or not.
- * @param {number} flag One of DropdownEasyConfig.FLAG_* values.
- */
-DropdownEasyConfig.prototype.getFlag = function(flag) {
-    return (this.flags & flag) == flag;
-};
-
-/**
- * Sets the specified flag in the flags field.
- * @param {number} flag One of DropdownEasyConfig.FLAG_* values.
- * @param {boolean} value The value to set the flag to.
- */
-DropdownEasyConfig.prototype.setFlag = function(flag, value) {
-    this.flags = (this.flags ^ flag) | (value ? flag : 0);
-};
 
 var dropdownConfig = new DropdownEasyConfig();
 
