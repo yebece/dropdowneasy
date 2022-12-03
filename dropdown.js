@@ -320,18 +320,25 @@ function menumove(event) {
 
             if (ddeConfig.isScalingBounceEnabled) {
                 dropDownOpenScalingBounce();
+                menuPositionCalculation();
             } else if (ddeConfig.isScalingBlurEnabled) {
                 dropDownOpenScalingBlur();
+                menuPositionCalculation();
             } else if (ddeConfig.isScalingFadeEnabled) {
                 dropDownOpenScalingFade();
+                menuPositionCalculation();
             } else if (ddeConfig.isScalingEnabled) {
                 dropDownOpenScaling();
+                menuPositionCalculation();
             } else if (ddeConfig.isFadingBlurEnabled) {
                 dropDownOpenFadingBlur();
+                menuPositionCalculation();
             } else if (ddeConfig.isFadingEnabled) {
                 dropDownOpenFading();
+                menuPositionCalculation();
             } else {
                 dropDownOpenNone();
+                menuPositionCalculation();
             }
 
 
@@ -340,8 +347,6 @@ function menumove(event) {
                 dropDownMenu.style.filter = "blur(0px)";
                 dropDownMenu.style.opacity = "100%";
                 dropDownMenu.style.transform = "scale(1)";
-                
-                menuPositionCalculation();
             }
 
             function dropDownOpenFading() {
@@ -352,8 +357,6 @@ function menumove(event) {
                 setTimeout(() => {
                     dropDownMenu.style.opacity = "100%";
                 }, 0.1);
-
-                menuPositionCalculation();
             }
 
             function dropDownOpenFadingBlur() {
@@ -364,8 +367,6 @@ function menumove(event) {
                     dropDownMenu.style.opacity = "100%";
                     dropDownMenu.style.filter = "blur(0px)";
                 }, 0.1);
-
-                menuPositionCalculation();
             }
 
             function dropDownOpenScaling() {
@@ -376,8 +377,6 @@ function menumove(event) {
                 setTimeout(() => {
                     dropDownMenu.style.transform = "scale(1)";
                 }, 0.1);
-
-                menuPositionCalculation();
             }
 
             function dropDownOpenScalingFade() {
@@ -388,8 +387,6 @@ function menumove(event) {
                     dropDownMenu.style.opacity = "100%";
                     dropDownMenu.style.transform = "scale(1)";
                 }, 0.1);
-
-                menuPositionCalculation();
             }
 
             function dropDownOpenScalingBlur() {
@@ -400,8 +397,6 @@ function menumove(event) {
                     dropDownMenu.style.transform = "scale(1)";
                     dropDownMenu.style.filter = "blur(0px)";
                 }, 0.1);
-
-                menuPositionCalculation();
             }
 
             function dropDownOpenScalingBounce() {
@@ -415,8 +410,6 @@ function menumove(event) {
                         dropDownMenu.style.transform = "scale(1)";
                     }, ddeConfig.scalingBounceDurationSeconds * 1000 + 50);
                 }, 0.1);
-
-                menuPositionCalculation();
             }
         }
         dropDownOpen(event.target.childNodes[1]);
