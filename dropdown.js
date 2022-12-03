@@ -57,6 +57,82 @@ DropdownEasyConfiguration.prototype.resetState = function() {
 
 var ddeConfig = new DropdownEasyConfiguration();
 
+var ddeAnimations = {
+    none: {
+        dismissDurationSeconds: 0,
+
+        dismissMenu: function(dropDownMenu) {
+            dropDownMenu.style.transition = "none";
+            dropDownMenu.style.filter = "blur(30px)";
+            dropDownMenu.style.opacity = "0%";
+            dropDownMenu.style.transform = "scale(0)";
+        }
+    },
+
+    scalingBlur: { 
+        dismissDurationSeconds: 0.2,
+
+        dismissMenu: function(dropDownMenu) {
+            dropDownMenu.style.transform = "scale(0)";
+            dropDownMenu.style.filter = "blur(30px)";
+            setTimeout(() => {
+                dropDownMenu.style.opacity = "0%";
+            }, this.dismissDurationSeconds * 1000);
+        }
+    },
+
+    scalingBounce: { 
+        dismissDurationSeconds: 0.2,
+
+        dismissMenu: function(dropDownMenu) {
+            dropDownMenu.style.transform = "scale(0)";
+        }
+    },
+
+    fadingBlur: { 
+        dismissDurationSeconds: 0.2,
+
+        dismissMenu: function(dropDownMenu) {
+            dropDownMenu.style.opacity = "0%";
+            dropDownMenu.style.filter = "blur(30px)";
+            setTimeout(() => {
+                dropDownMenu.style.transform = "scale(0)";
+            }, this.dismissDurationSeconds * 1000);
+        }
+    },
+
+    scalingFade: { 
+        dismissDurationSeconds: 0.2, 
+
+        dismissMenu: function(dropDownMenu) {
+            dropDownMenu.style.opacity = "0%";
+            dropDownMenu.style.transform = "scale(0)";
+            setTimeout(() => {
+                dropDownMenu.style.filter = "blur(30px)";
+            }, this.dismissDurationSeconds * 1000);
+        }
+    },
+
+    scaling: { 
+        dismissDurationSeconds: 0.2,
+
+        dismissMenu: function(dropDownMenu) {
+            dropDownMenu.style.transform = "scale(0)";
+        }
+    },
+
+    fading: { 
+        dismissDurationSeconds: 0.2,
+
+        dismissMenu: function(dropDownMenu) {
+            dropDownMenu.style.opacity = "0%";
+            setTimeout(() => {
+                dropDownMenu.style.transform = "scale(0)";
+            }, this.dismissDurationSeconds * 1000);
+        }
+    },
+};
+
 // Dropdown Menus
 
 function dismissMenu() {
@@ -85,7 +161,7 @@ function dismissMenu() {
         dismissMenuFading();
     } else {
         dismissDuration = 0;
-        dismissMenuDefault();
+        dismissMenuNone();
     }
 
     setTimeout(() => {
@@ -96,50 +172,32 @@ function dismissMenu() {
         document.getElementById("dropdownn").setAttribute("id", "");
     }, dismissDuration * 1000 + 50);
 
-    function dismissMenuDefault() {
-        dropDownMenu.style.transition = "none";
-        dropDownMenu.style.filter = "blur(30px)";
-        dropDownMenu.style.opacity = "0%";
-        dropDownMenu.style.transform = "scale(0)";
+    function dismissMenuNone() {
+        ddeAnimations.none.dismissMenu(dropDownMenu);
     }
 
     function dismissMenuFading() {
-        dropDownMenu.style.opacity = "0%";
-        setTimeout(() => {
-            dropDownMenu.style.transform = "scale(0)";
-        }, ddeConfig.fadingDurationSeconds * 1000);
+        ddeAnimations.fading.dismissMenu(dropDownMenu);
     }
 
     function dismissMenuScaling() {
-        dropDownMenu.style.transform = "scale(0)";
+        ddeAnimations.scaling.dismissMenu(dropDownMenu);
     }
 
     function dismissMenuScalingFade() {
-        dropDownMenu.style.opacity = "0%";
-        dropDownMenu.style.transform = "scale(0)";
-        setTimeout(() => {
-            dropDownMenu.style.filter = "blur(30px)";
-        }, ddeConfig.scalingFadeDurationSeconds * 1000);
+        ddeAnimations.scalingFade.dismissMenu(dropDownMenu);
     }
 
     function dismissMenuFadingBlur() {
-        dropDownMenu.style.opacity = "0%";
-        dropDownMenu.style.filter = "blur(30px)";
-        setTimeout(() => {
-            dropDownMenu.style.transform = "scale(0)";
-        }, ddeConfig.fadingBlurDurationSeconds * 1000);
+        ddeAnimations.fadingBlur.dismissMenu(dropDownMenu);
     }
 
     function dismissMenuScalingBounce() {
-        dropDownMenu.style.transform = "scale(0)";
+        ddeAnimations.scalingBounce.dismissMenu(dropDownMenu);
     }
 
     function dismissMenuScalingBlur() {
-        dropDownMenu.style.transform = "scale(0)";
-        dropDownMenu.style.filter = "blur(30px)";
-        setTimeout(() => {
-            dropDownMenu.style.opacity = "0%";
-        }, ddeConfig.scalingBlurDurationSeconds * 1000);
+        ddeAnimations.scalingBlur.dismissMenu(dropDownMenu);
     }
 }
 
