@@ -160,80 +160,80 @@ function menumove(event) {
 
     if (event.target.classList.toString().indexOf("scaling") > -1) {
         ddeConfig.isScalingEnabled = true;
-        
-        if(event.target.classList.toString().indexOf("@") > -1){
-        var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
-        
 
-        var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
+        if (event.target.classList.toString().indexOf("@") > -1) {
+            var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
 
-        ddeConfig.scalingDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
-        ddeConfig.scalingCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
+
+            var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
+
+            ddeConfig.scalingDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
+            ddeConfig.scalingCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
     }
 
     if (event.target.classList.toString().indexOf("scaling-bouncy") > -1) {
         ddeConfig.isScalingBounceEnabled = true;
 
-        if(event.target.classList.toString().indexOf("@") > -1){
-        var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
+        if (event.target.classList.toString().indexOf("@") > -1) {
+            var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
 
-        var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
+            var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
 
-        ddeConfig.scalingBounceDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
-        ddeConfig.scalingBouncyCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
+            ddeConfig.scalingBounceDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
+            ddeConfig.scalingBouncyCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
     }
 
     if (event.target.classList.toString().indexOf("scaling-blur") > -1) {
         ddeConfig.isScalingBlurEnabled = true;
 
-        if(event.target.classList.toString().indexOf("@") > -1){
+        if (event.target.classList.toString().indexOf("@") > -1) {
             var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
 
-        var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
-        
-        ddeConfig.scalingBlurDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
-        ddeConfig.scalingBlurCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
+            var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
+
+            ddeConfig.scalingBlurDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
+            ddeConfig.scalingBlurCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
     }
 
     if (event.target.classList.toString().indexOf("scaling-fade") > -1) {
         ddeConfig.isScalingFadeEnabled = true;
 
-        if(event.target.classList.toString().indexOf("@") > -1){
+        if (event.target.classList.toString().indexOf("@") > -1) {
             var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
 
-        var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
-        
-        ddeConfig.scalingFadeDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
-        ddeConfig.scalingFadeCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
+            var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
+
+            ddeConfig.scalingFadeDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
+            ddeConfig.scalingFadeCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
     }
 
     if (event.target.classList.toString().indexOf("fade") > -1) {
         ddeConfig.isFadingEnabled = true;
 
-        if(event.target.classList.toString().indexOf("@") > -1){
+        if (event.target.classList.toString().indexOf("@") > -1) {
             var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
 
-        var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
-        
-        ddeConfig.fadingDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
-        ddeConfig.fadeCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
+            var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
+
+            ddeConfig.fadingDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
+            ddeConfig.fadeCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
     }
 
     if (event.target.classList.toString().indexOf("fade-blur") > -1) {
         ddeConfig.isFadingBlurEnabled = true;
 
-        if(event.target.classList.toString().indexOf("@") > -1){
+        if (event.target.classList.toString().indexOf("@") > -1) {
             var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
 
-        var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
-        
-        ddeConfig.fadingBlurDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
-        ddeConfig.fadeBlurCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
+            var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
+
+            ddeConfig.fadingBlurDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
+            ddeConfig.fadeBlurCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
     }
 
@@ -400,8 +400,8 @@ function menumove(event) {
     console.log(nodes.join());
 
     if (event.target.classList.contains("dropdown")
-     || event.target.classList.contains("dropdown-menu") 
-     || nodes.join().includes("dropdown-menu") && !event.target.classList.contains("dismiss-button")) {
+        || event.target.classList.contains("dropdown-menu")
+        || nodes.join().includes("dropdown-menu") && !event.target.classList.contains("dismiss-button")) {
         if (!ddeConfig.isDropdownEnabled) {
             ddeConfig.isDropdownEnabled = true;
 
@@ -426,7 +426,7 @@ function menumove(event) {
     }
 }
 
-window.onscroll = function(e) {
+window.onscroll = function (e) {
     if (ddeConfig.shouldDismissWhileScrolling) {
         dismissMenu();
     }
