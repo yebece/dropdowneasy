@@ -43,7 +43,21 @@ function DropdownEasyConfig() {
     this.scalingFadeCurveType = "";
     this.fadeCurveType = "";
     this.fadeBlurCurveType = "";
+
+    this.flags = 0;
 }
+
+DropdownEasyConfig.FLAG_IS_DROPDOWN_ENABLED             = 0x00000001;
+DropdownEasyConfig.FLAG_SHOULD_NOT_DISMISS_AT_TAP       = 0x00000002;
+DropdownEasyConfig.FLAG_SHOULD_DISMISS_WHILE_SCROLLING  = 0x00000004;
+DropdownEasyConfig.FLAG_IS_SECONDARY_CLICK_ENABLED      = 0x00000008;
+DropdownEasyConfig.FLAG_IS_FIXED_POSITIONING_ENABLED    = 0x00000010;
+DropdownEasyConfig.FLAG_IS_SCALING_ENABLED              = 0x00000020;
+DropdownEasyConfig.FLAG_IS_SCALING_BOUNCE_ENABLED       = 0x00000040;
+DropdownEasyConfig.FLAG_IS_SCALING_BLUR_ENABLED         = 0x00000080;
+DropdownEasyConfig.FLAG_IS_SCALING_FADE_ENABLED         = 0x00000100;
+DropdownEasyConfig.FLAG_IS_FADING_ENABLED               = 0x00000200;
+DropdownEasyConfig.FLAG_IS_FADING_BLUR_ENABLED          = 0x00000400;
 
 var dropdownConfig = new DropdownEasyConfig();
 
