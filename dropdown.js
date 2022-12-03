@@ -218,67 +218,66 @@ function menumove(event) {
         ddeConfig.isFixedPositioningEnabled = true;
     }
 
+    var classString = event.target.classList.toString();
     // Animations
 
-    if (event.target.classList.toString().indexOf("scaling") > -1) {
+    if (classString.indexOf("scaling") > -1) {
         ddeConfig.isScalingEnabled = true;
 
-        if (event.target.classList.toString().indexOf("@") > -1) {
-            var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
-
-
+        if (classString.indexOf("@") > -1) {
+            var x = classString.substring(classString.indexOf("@"), classString.length) + " ";
             var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
 
+            // TODO: eval()?! are you serious
             ddeConfig.scalingDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
             ddeConfig.scalingCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
     }
 
-    if (event.target.classList.toString().indexOf("scaling-bouncy") > -1) {
+    if (classString.indexOf("scaling-bouncy") > -1) {
         ddeConfig.isScalingBounceEnabled = true;
 
-        if (event.target.classList.toString().indexOf("@") > -1) {
-            var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
-
+        if (classString.indexOf("@") > -1) {
+            var x = classString.substring(classString.indexOf("@"), classString.length) + " ";
             var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
 
+            // TODO: Get rid of evals, use safer alternatives
             ddeConfig.scalingBounceDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
             ddeConfig.scalingBouncyCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
     }
 
-    if (event.target.classList.toString().indexOf("scaling-blur") > -1) {
+    if (classString.indexOf("scaling-blur") > -1) {
         ddeConfig.isScalingBlurEnabled = true;
 
-        if (event.target.classList.toString().indexOf("@") > -1) {
-            var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
-
+        if (classString.indexOf("@") > -1) {
+            var x = classString.substring(classString.indexOf("@"), classString.length) + " ";
             var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
 
+            // TODO: Eval must be gone
             ddeConfig.scalingBlurDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
             ddeConfig.scalingBlurCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
     }
 
-    if (event.target.classList.toString().indexOf("scaling-fade") > -1) {
+    if (classString.indexOf("scaling-fade") > -1) {
         ddeConfig.isScalingFadeEnabled = true;
 
-        if (event.target.classList.toString().indexOf("@") > -1) {
-            var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
-
+        if (classString.indexOf("@") > -1) {
+            var x = classString.substring(classString.indexOf("@"), classString.length) + " ";
             var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
 
+            // TODO: You know what to do.
             ddeConfig.scalingFadeDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
             ddeConfig.scalingFadeCurveType = durationAndType.substring(durationAndType.indexOf("-") + 1, durationAndType.length - 1);
         }
     }
 
-    if (event.target.classList.toString().indexOf("fade") > -1) {
+    if (classString.indexOf("fade") > -1) {
         ddeConfig.isFadingEnabled = true;
 
-        if (event.target.classList.toString().indexOf("@") > -1) {
-            var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
-
+        if (classString.indexOf("@") > -1) {
+            var x = classString.substring(classString.indexOf("@"), classString.length) + " ";
             var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
 
             ddeConfig.fadingDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
@@ -286,12 +285,11 @@ function menumove(event) {
         }
     }
 
-    if (event.target.classList.toString().indexOf("fade-blur") > -1) {
+    if (classString.indexOf("fade-blur") > -1) {
         ddeConfig.isFadingBlurEnabled = true;
 
-        if (event.target.classList.toString().indexOf("@") > -1) {
-            var x = event.target.classList.toString().substring(event.target.classList.toString().indexOf("@"), event.target.classList.toString().length) + " ";
-
+        if (classString.indexOf("@") > -1) {
+            var x = classString.substring(classString.indexOf("@"), classString.length) + " ";
             var durationAndType = x.substring(0, x.indexOf(" ")) + "-";
 
             ddeConfig.fadingBlurDurationSeconds = eval(durationAndType.substring(1, durationAndType.indexOf("-") - 1));
