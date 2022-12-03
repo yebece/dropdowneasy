@@ -182,23 +182,29 @@ function DropdownEasyConfiguration() {
     this.shouldDismissWhileScrolling = false; // old name: dismissWhileScrolling
     this.isSecondaryClickEnabled = false; // old name: secondaryClickEnabled
     this.isFixedPositioningEnabled = false; // old name: fixedPosEnabled
-    this.isScalingEnabled = false; // old name: scalingEnabled
-    this.isScalingBounceEnabled = false; // old name: scalingBouncyEnabled
-    this.isScalingBlurEnabled = false; // old name: scalingBlurEnabled
-    this.isScalingFadeEnabled = false; // old name: scalingFadeEnabled
-    this.isFadingEnabled = false; // old name: fadeEnabled
-    this.isFadingBlurEnabled = false; // old name: fadeBlurEnabled
-    this.scalingDurationSeconds = 0.2;
-    this.scalingBounceDurationSeconds = 0.2;
-    this.scalingBlurDurationSeconds = 0.2;
-    this.scalingFadeDurationSeconds = 0.2;
-    this.fadingDurationSeconds = 0.2;
-    this.fadingBlurDurationSeconds = 0.2;
-    this.scalingCurveType = "";
+    
     this.scalingBouncyCurveType = "";
+    this.scalingBounceDurationSeconds = 0.2;
+    this.isScalingBounceEnabled = false; // old name: scalingBouncyEnabled
+
+    this.isScalingBlurEnabled = false; // old name: scalingBlurEnabled
+    this.scalingBlurDurationSeconds = 0.2;
     this.scalingBlurCurveType = "";
+
+    this.isScalingFadeEnabled = false; // old name: scalingFadeEnabled
+    this.scalingFadeDurationSeconds = 0.2;
     this.scalingFadeCurveType = "";
+
+    this.isFadingEnabled = false; // old name: fadeEnabled
+    this.fadingDurationSeconds = 0.2;
     this.fadeCurveType = "";
+
+    this.isScalingEnabled = false; // old name: scalingEnabled
+    this.scalingDurationSeconds = 0.2;
+    this.scalingCurveType = "";
+
+    this.isFadingBlurEnabled = false; // old name: fadeBlurEnabled
+    this.fadingBlurDurationSeconds = 0.2;
     this.fadeBlurCurveType = "";
 }
 
