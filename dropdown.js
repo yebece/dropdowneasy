@@ -20,6 +20,7 @@ for (var i = 0; i < all0.length; i++) {
 var ddeAnimations = {
     none: {
         dismissDurationSeconds: 0,
+        curveType: "",
 
         dismissMenu: function(dropDownMenu) {
             dropDownMenu.style.transition = "none";
@@ -38,6 +39,7 @@ var ddeAnimations = {
 
     scalingBlur: { 
         dismissDurationSeconds: 0.2,
+        curveType: "",
 
         dismissMenu: function(dropDownMenu) {
             dropDownMenu.style.transform = "scale(0)";
@@ -49,7 +51,9 @@ var ddeAnimations = {
 
         dropDownOpen: function(dropDownMenu) {
             dropDownMenu.style.opacity = "100%";
-            dropDownMenu.style.transition = "filter " + ddeConfig.scalingBlurDurationSeconds + "s " + ddeConfig.scalingBlurCurveType + ", transform " + ddeConfig.scalingBlurDurationSeconds + "s " + ddeConfig.scalingBlurCurveType;
+            dropDownMenu.style.transition = 
+                "filter " + this.dismissDurationSeconds + "s " + this.curveType + 
+                ", transform " + this.dismissDurationSeconds + "s " + this.curveType;
 
             setTimeout(() => {
                 dropDownMenu.style.transform = "scale(1)";
@@ -60,13 +64,14 @@ var ddeAnimations = {
 
     scalingBounce: { 
         dismissDurationSeconds: 0.2,
+        curveType: "",
 
         dismissMenu: function(dropDownMenu) {
             dropDownMenu.style.transform = "scale(0)";
         },
 
         dropDownOpen: function(dropDownMenu) {
-            dropDownMenu.style.transition = "transform " + ddeConfig.scalingBounceDurationSeconds + "s " + ddeConfig.scalingBouncyCurveType;
+            dropDownMenu.style.transition = "transform " + this.dismissDurationSeconds + "s " + this.curveType;
             dropDownMenu.style.filter = "blur(0px)";
             dropDownMenu.style.opacity = "100%";
 
@@ -74,13 +79,14 @@ var ddeAnimations = {
                 dropDownMenu.style.transform = "scale(1.01)";
                 setTimeout(() => {
                     dropDownMenu.style.transform = "scale(1)";
-                }, ddeConfig.scalingBounceDurationSeconds * 1000 + 50);
+                }, this.dismissDurationSeconds * 1000 + 50);
             }, 0.1);
         }
     },
 
     fadingBlur: { 
         dismissDurationSeconds: 0.2,
+        curveType: "",
 
         dismissMenu: function(dropDownMenu) {
             dropDownMenu.style.opacity = "0%";
@@ -92,7 +98,9 @@ var ddeAnimations = {
 
         dropDownOpen: function(dropDownMenu) {
             dropDownMenu.style.transform = "scale(1)";
-            dropDownMenu.style.transition = "filter " + ddeConfig.fadingBlurDurationSeconds + "s " + ddeConfig.fadeBlurCurveType + ", opacity " + ddeConfig.fadingBlurDurationSeconds + "s " + ddeConfig.fadeBlurCurveType;
+            dropDownMenu.style.transition = 
+                "filter " + this.dismissDurationSeconds + "s " + this.curveType + 
+                ", opacity " + this.dismissDurationSeconds + "s " + this.curveType;
             
             setTimeout(() => {
                 dropDownMenu.style.opacity = "100%";
@@ -103,6 +111,7 @@ var ddeAnimations = {
 
     scalingFade: { 
         dismissDurationSeconds: 0.2, 
+        curveType: "",
 
         dismissMenu: function(dropDownMenu) {
             dropDownMenu.style.opacity = "0%";
@@ -114,7 +123,9 @@ var ddeAnimations = {
 
         dropDownOpen: function(dropDownMenu) {
             dropDownMenu.style.filter = "blur(0px)";
-            dropDownMenu.style.transition = "opacity " + ddeConfig.scalingFadeDurationSeconds + "s " + ddeConfig.scalingFadeCurveType + ", transform " + ddeConfig.scalingFadeDurationSeconds + "s " + ddeConfig.scalingFadeCurveType;
+            dropDownMenu.style.transition = 
+                "opacity " + this.dismissDurationSeconds + "s " + this.curveType + 
+                ", transform " + this.dismissDurationSeconds + "s " + this.curveType;
 
             setTimeout(() => {
                 dropDownMenu.style.opacity = "100%";
@@ -125,6 +136,7 @@ var ddeAnimations = {
 
     scaling: { 
         dismissDurationSeconds: 0.2,
+        curveType: "",
 
         dismissMenu: function(dropDownMenu) {
             dropDownMenu.style.transform = "scale(0)";
@@ -133,7 +145,7 @@ var ddeAnimations = {
         dropDownOpen: function(dropDownMenu) {
             dropDownMenu.style.filter = "blur(0px)";
             dropDownMenu.style.opacity = "100%";
-            dropDownMenu.style.transition = "transform " + ddeConfig.scalingDurationSeconds + "s " + ddeConfig.scalingCurveType;
+            dropDownMenu.style.transition = "transform " + this.dismissDurationSeconds + "s " + this.curveType;
             
             setTimeout(() => {
                 dropDownMenu.style.transform = "scale(1)";
@@ -143,6 +155,7 @@ var ddeAnimations = {
 
     fading: { 
         dismissDurationSeconds: 0.2,
+        curveType: "",
 
         dismissMenu: function(dropDownMenu) {
             dropDownMenu.style.opacity = "0%";
@@ -154,7 +167,7 @@ var ddeAnimations = {
         dropDownOpen: function(dropDownMenu) {
             dropDownMenu.style.filter = "blur(0px)";
             dropDownMenu.style.transform = "scale(1)";
-            dropDownMenu.style.transition = "opacity " + ddeConfig.fadingDurationSeconds + "s " + ddeConfig.fadeCurveType;
+            dropDownMenu.style.transition = "opacity " + this.dismissDurationSeconds + "s " + this.curveType;
 
             setTimeout(() => {
                 dropDownMenu.style.opacity = "100%";
