@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,55 +10,55 @@
     <link rel="shortcut icon" href="dropdown-easy-logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 </head>
+
 <body>
     <div class="header">
-        
         <img src="dropdown-easy-logo.png" style="width: 32px; height: 32px;">
-        <font><b>dropdown</b>easy
-        Documentation</font>
+        <span><b>dropdown</b>easy</span>Documentation
     </div>
+
     <div class="container">
+
         <div class="chapters">
             <span class="chapter-group-title">Getting Started</span>
+
             <a href="#installation"><div class="chapter">Installation</div></a>
             <a href="#usage"><div class="chapter">Usage</div></a>
             <a href="#utilities"><div class="chapter">Utilities</div></a>
             <a href="#animations"><span class="chapter-group-title">Animations</span></a>
             <a href="#usage-of-animations-n-types"><div class="chapter">Usage of Animations & Types</div></a>
-            
         </div>
+
         <div class="page">
-<!--
-<pre>
-<code>&lt;<span class="main">div</span> <span class="secondary">class</span>=<span class="value">"lol"</span>&gt;
-&lt;/<span class="main">div</span>&gt;</code>
-</pre>
--->
-<p>    <br/>
-    <h1>Getting Started</h1>
-    <h2 id="installation">Installation</h2>
-Including <code>"dropdown.js"</code> file at your html file is enough to use Dropdown Easy at your project.
-<pre>
+            <p> <br />
+            <h1>Getting Started</h1>
+            <h2 id="installation">Installation</h2>
+            Including <code>"dropdown.js"</code> file at your html file is enough to use Dropdown Easy at your project.
+            <pre>
 <code>&lt;<span class="main">script</span> <span class="secondary">src</span>=<span class="value">"dropdown.js"</span>&gt;&lt;/<span class="main">script</span>&gt;</code>
 </pre>
-<h2 id="usage">Usage</h2>
+            <h2 id="usage">Usage</h2>
 
-You must have a container element to open dropdown menu when container triggered. The container element must have <code>"dropdown"</code> as class, and the dropdown menu itself must have <code>"dropdown-menu"</code> as class. Then you can fill and stylize <code>"dropdown-menu"</code> as you want. Here's the structure:
-<pre>
+            You must have a container element to open dropdown menu when container triggered. The container element must
+            have <code>"dropdown"</code> as class, and the dropdown menu itself must have <code>"dropdown-menu"</code>
+            as class. Then you can fill and stylize <code>"dropdown-menu"</code> as you want. Here's the structure:
+            <pre>
 <code>&lt;<span class="main">element</span> <span class="secondary">class</span>=<span class="value">"dropdown"</span>&gt;
     &lt;<span class="main">element</span> <span class="secondary">class</span>=<span class="value">"dropdown-menu"</span>&gt;
         ...
     &lt;/<span class="main">element</span>&gt;
 &lt;/<span class="main">element</span>&gt;</code>
 </pre>
-<div class="note">
-    <b>Note:</b> Container element must be at the fore to dedect the clicking, otherwise menu doesn't opens.
-</div>
-<br/>
-Then you can utilitize and stylize the dropdown menu as you want. Like the example below:
-<pre>
+            <div class="note">
+                <b>Note:</b> Container element must be at the fore to dedect the clicking, otherwise menu doesn't opens.
+            </div>
+            <br />
+            Then you can utilitize and stylize the dropdown menu as you want. Like the example below:
+            <pre>
 <code>&lt;<span class="main">div</span> <span class="secondary">class</span>=<span class="value">"dropdown fade@0.1s-ease-in secondary-click"</span>&gt;
     &lt;<span class="main">div</span> <span class="secondary">class</span>=<span class="value">"dropdown-menu"</span>&gt;
         &lt;<span class="main">ul</span>&gt;
@@ -69,352 +70,138 @@ Then you can utilitize and stylize the dropdown menu as you want. Like the examp
     &lt;/<span class="main">div</span>&gt;
 &lt;/<span class="main">div</span>&gt;</code>
 </pre>
-<h1 id="utilities">Utilities</h1>
-You can add utilities easily by adding them as classes. For example, you can add <code>"dont-dismiss-at-tap"</code> class to the container element to prevent dropdown menu from dismissing when you tap on it. 
-<h2>dont-dismiss-at-tap</h2>
-The function of the <code>"dont-dismiss-at-tap"</code> class is to prevent dropdown menu from dismissing when you click/tap to the areas inside <code>"dropdown-menu"</code>.
-<div class="example-button dropdown fade-blur@0.3s dont-dismiss-at-tap">
-    <div class="dropdown-menu">
-        This menu doesn't close when you tap/click on it.
-    </div>
-    Includes "dont-dismiss-at-tap".
-</div>
-<div class="example-button dropdown fade-blur@0.3s">
-    Doesn't include "dont-dismiss-at-tap".
-    <div class="dropdown-menu">
-        This menu will close anyways when you tap/click.
-    </div>
-</div>
-<h2>dismiss-button</h2>
-The function of <code>"dismiss-button"</code> is giving an element a dismiss button function in <code>"dropdown-menu"</code>, so it's only useful when <code>"dont-dismiss-at-tap"</code> class is enabled; also different than other utilities, the <code>"dismiss-button"</code> class must be added to an element in <code>"dropdown-menu"</code>.
-<div class="example-button dropdown fade-blur@0.3s dont-dismiss-at-tap">
-    <div class="dropdown-menu">
-        Close this <code>"dont-dismiss-at-tap"</code> by the button below.<br/><br/>
-        <button class="dismiss-button">Close</button>
-    </div>
-    Includes a "dismiss-button" element.
-</div>
-<h2>dismiss-while-scrolling</h2>
-The function of the <code>"dismiss-while-scrolling"</code> class is to dismiss the dropdown menu when you scroll the page.
-<div class="example-button dropdown fade-blur@0.3s dismiss-while-scrolling">
-    <div class="dropdown-menu">
-        Scroll and it'll gone.
-    </div>
-    Includes "dismiss-while-scrolling".
-</div>
-<h2>secondary-click</h2>
-The <code>"secondary-click"</code> class lets you replace your dropdown menu with context menu in dropdown, so you must use secondary button of your mouse to open it.
-<div class="example-button dropdown fade-blur@0.3s secondary-click">
-    <div class="dropdown-menu">
-        Hellooo
-    </div>
-    Includes "secondary-click".
-</div>
-<h2>fixed-pos</h2>
-The <code>"fixed-pos"</code> class lets you fix the position of dropdown menu at the position it opened.
-<div class="example-button dropdown fade-blur@0.3s fixed-pos">
-    <div class="dropdown-menu">
-        Look it stays still when you scroll.
-    </div>
-    Includes "fixed-pos".
-</div>
-<h1>Animations</h1>
-<h2 id="usage-of-animations-n-types">Usage of Animations & Types</h2>
-You can add menus opening&closing animations. There is 6 types of animations and you can customize the transition duration and curve as you want. Syntax is almost same as CSS, you can use CSS timing-functions. Here's the syntax:
-<pre>
+            <h1 id="utilities">Utilities</h1>
+            You can add utilities easily by adding them as classes. For example, you can add
+            <code>"dont-dismiss-at-tap"</code> class to the container element to prevent dropdown menu from dismissing
+            when you tap on it.
+            <h2>dont-dismiss-at-tap</h2>
+            The function of the <code>"dont-dismiss-at-tap"</code> class is to prevent dropdown menu from dismissing
+            when you click/tap to the areas inside <code>"dropdown-menu"</code>.
+            <div class="example-button dropdown fade-blur@0.3s dont-dismiss-at-tap">
+                <div class="dropdown-menu">
+                    This menu doesn't close when you tap/click on it.
+                </div>
+                Includes "dont-dismiss-at-tap".
+            </div>
+            <div class="example-button dropdown fade-blur@0.3s">
+                Doesn't include "dont-dismiss-at-tap".
+                <div class="dropdown-menu">
+                    This menu will close anyways when you tap/click.
+                </div>
+            </div>
+            <h2>dismiss-button</h2>
+            The function of <code>"dismiss-button"</code> is giving an element a dismiss button function in
+            <code>"dropdown-menu"</code>, so it's only useful when <code>"dont-dismiss-at-tap"</code> class is enabled;
+            also different than other utilities, the <code>"dismiss-button"</code> class must be added to an element in
+            <code>"dropdown-menu"</code>.
+            <div class="example-button dropdown fade-blur@0.3s dont-dismiss-at-tap">
+                <div class="dropdown-menu">
+                    Close this <code>"dont-dismiss-at-tap"</code> by the button below.<br /><br />
+                    <button class="dismiss-button">Close</button>
+                </div>
+                Includes a "dismiss-button" element.
+            </div>
+            <h2>dismiss-while-scrolling</h2>
+            The function of the <code>"dismiss-while-scrolling"</code> class is to dismiss the dropdown menu when you
+            scroll the page.
+            <div class="example-button dropdown fade-blur@0.3s dismiss-while-scrolling">
+                <div class="dropdown-menu">
+                    Scroll and it'll gone.
+                </div>
+                Includes "dismiss-while-scrolling".
+            </div>
+            <h2>secondary-click</h2>
+            The <code>"secondary-click"</code> class lets you replace your dropdown menu with context menu in dropdown,
+            so you must use secondary button of your mouse to open it.
+            <div class="example-button dropdown fade-blur@0.3s secondary-click">
+                <div class="dropdown-menu">
+                    Hellooo
+                </div>
+                Includes "secondary-click".
+            </div>
+            <h2>fixed-pos</h2>
+            The <code>"fixed-pos"</code> class lets you fix the position of dropdown menu at the position it opened.
+            <div class="example-button dropdown fade-blur@0.3s fixed-pos">
+                <div class="dropdown-menu">
+                    Look it stays still when you scroll.
+                </div>
+                Includes "fixed-pos".
+            </div>
+            <h1>Animations</h1>
+            <h2 id="usage-of-animations-n-types">Usage of Animations & Types</h2>
+            You can add menus opening&closing animations. There is 6 types of animations and you can customize the
+            transition duration and curve as you want. Syntax is almost same as CSS, you can use CSS timing-functions.
+            Here's the syntax:
+            <pre>
 <code>&lt;<span class="main">element</span> <span class="secondary">class</span>=<span class="value">"dropdown [animationType]@[duration]s-[timing-function]</span>...<span class="value">"</span>&gt;
     &lt;<span class="main">element</span> <span class="secondary">class</span>=<span class="value">"dropdown-menu"</span>&gt;
         ...
     &lt;/<span class="main">element</span>&gt;
 &lt;/<span class="main">element</span>&gt;</code>
 </pre>
-<div class="note">
-    <b>Note:</b> To use <code>cubic-bezier</code> there mustn't be spaces between values.
-</div>
-<br/>
-Default duration value is <code>0.2s</code>, default timing-function is <code>"ease"</code>.
+            <div class="note">
+                <b>Note:</b> To use <code>cubic-bezier</code> there mustn't be spaces between values.
+            </div>
+            <br />
+            Default duration value is <code>0.2s</code>, default timing-function is <code>"ease"</code>.
 
-<h2>scaling</h2>
-Transition between 0%-100% scale.
-<div class="example-button dropdown scaling@0.2s-ease">
-    <div class="dropdown-menu">
-        Hellooo
-    </div>
-    "scaling" transition
-</div>
-<h2>scaling-bouncy</h2>
-Transition between 0%-100% scale with bouncy effect.
-<div class="example-button dropdown scaling-bouncy@0.2s-ease">
-    <div class="dropdown-menu">
-        Hellooo
-    </div>
-    "scaling-bouncy" transition
-</div>
-<div class="note">
-    <b>Note:</b> When durations get higher it gets less visible. Recommended with faster durations.
-</div>
-<h2>scaling-blur</h2>
-Transition between 0%-100% scale and 30px-0px blur.
-<div class="example-button dropdown scaling-blur@0.3s-ease">
-    <div class="dropdown-menu">
-        Hellooo
-    </div>
-    "scaling-blur" transition
-</div>
-<i>Recommended duration is 0.3s</i>
-<h2>scaling-fade</h2>
-Transition between 0%-100% scale and 0%-100% opacity.
-<div class="example-button dropdown scaling-fade@0.2s-ease">
-    <div class="dropdown-menu">
-        Hellooo
-    </div>
-    "scaling-fade" transition
-</div>
-<h2>fade</h2>
-Transition between 0%-100% opacity.
-<div class="example-button dropdown fade@0.2s-ease">
-    <div class="dropdown-menu">
-        Hellooo
-    </div>
-    "fade" transition
-</div>
-<h2 id="fade-blur">fade-blur</h2>
-Transition between 0%-100% opacity and 30px-0px blur.
-<div class="example-button dropdown fade-blur@0.3s-ease">
-    <div class="dropdown-menu">
-        Hellooo
-    </div>
-    "fade-blur" transition
-</div>
-<i>Recommended duration is 0.3s</i>
-</p>
+            <h2>scaling</h2>
+            Transition between 0%-100% scale.
+            <div class="example-button dropdown scaling@0.2s-ease">
+                <div class="dropdown-menu">
+                    Hellooo
+                </div>
+                "scaling" transition
+            </div>
+            <h2>scaling-bouncy</h2>
+            Transition between 0%-100% scale with bouncy effect.
+            <div class="example-button dropdown scaling-bouncy@0.2s-ease">
+                <div class="dropdown-menu">
+                    Hellooo
+                </div>
+                "scaling-bouncy" transition
+            </div>
+            <div class="note">
+                <b>Note:</b> When durations get higher it gets less visible. Recommended with faster durations.
+            </div>
+            <h2>scaling-blur</h2>
+            Transition between 0%-100% scale and 30px-0px blur.
+            <div class="example-button dropdown scaling-blur@0.3s-ease">
+                <div class="dropdown-menu">
+                    Hellooo
+                </div>
+                "scaling-blur" transition
+            </div>
+            <i>Recommended duration is 0.3s</i>
+            <h2>scaling-fade</h2>
+            Transition between 0%-100% scale and 0%-100% opacity.
+            <div class="example-button dropdown scaling-fade@0.2s-ease">
+                <div class="dropdown-menu">
+                    Hellooo
+                </div>
+                "scaling-fade" transition
+            </div>
+            <h2>fade</h2>
+            Transition between 0%-100% opacity.
+            <div class="example-button dropdown fade@0.2s-ease">
+                <div class="dropdown-menu">
+                    Hellooo
+                </div>
+                "fade" transition
+            </div>
+            <h2 id="fade-blur">fade-blur</h2>
+            Transition between 0%-100% opacity and 30px-0px blur.
+            <div class="example-button dropdown fade-blur@0.3s-ease">
+                <div class="dropdown-menu">
+                    Hellooo
+                </div>
+                "fade-blur" transition
+            </div>
+            <i>Recommended duration is 0.3s</i>
+            </p>
         </div>
     </div>
 </body>
-<style>
-    body{
-        background-color: #EDEFEF;
-        font-family: Inter;
-    }
+<script src="../dropdown.js"></script>
 
-    html {
-        scroll-behavior: smooth;
-    }
-
-    
-    ::-webkit-scrollbar-track {
-        background: #00000000;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background: rgba(0, 0, 0, 0.151);
-        transition: all 0.2s;
-        border-radius: var(--radius-small);
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-        background: rgba(0, 0, 0, 0.302);
-        transition: all 0.2s;
-    }
-
-    ::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-        margin: 5px;
-    }
-
-    .header{
-        width: 100%;
-        height: 50px;
-        position: fixed;
-        left: 0px;
-        top: 0px;
-        padding: 9px;
-        box-sizing: border-box;
-
-        display: flex;
-        align-items: center;
-        gap: 10px;
-
-        background: #FFFFFF;
-        border-bottom: 1px solid rgba(237, 237, 237, 0.5);
-    }
-
-    .container{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        color: #313131;
-        flex-direction: row;
-        justify-content: right;
-    }
-
-    a{
-        color: #313131;
-        text-decoration: none;
-    }
-
-    hr{
-        height: 2px;
-        width: 90%;
-        margin-left: 5%;
-        border: none;
-        background: rgba(0, 0, 0, 0.1);
-        border-radius: 3px;
-    }
-
-    .chapters{
-        width: 20%;
-        height: 100%;
-        padding: 10px;
-        position: fixed;
-        top: 50px;
-        left: 0;
-        box-sizing: border-box;
-        display: flex;
-        gap: 4px;
-        flex-direction: column;
-        background: #fff;
-        border-right: 1px solid #F6F6F6;
-    }
-
-    .context-menu{
-        width: 180px;
-        background-color: #fff;
-        border-radius: 10px;
-        box-sizing: border-box;
-        padding: 10px;
-    }
-
-    .context-menu span{
-        width: 100%;
-        height: 40px;
-    }
-
-    .chapter-group-title{
-        font-size: 16px;
-        font-weight: bold;
-        color: rgba(0, 0, 0, 0.5);
-        margin-left: 14px;
-        padding-top: 6px;
-    }
-
-    .chapter{
-        width: 100%;
-        height: 40px;
-        background-color: #fff;
-        font-weight: 600;
-        font-size: 12px;
-        line-height: 14px;
-        border-radius: 12px;
-        padding-left: 14px;
-        box-sizing: border-box;
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        transition: all 0.05s;
-    }
-
-    .chapter:hover{
-        background-color: #EEEEEE;
-        transition: all 0.05s;
-    }
-
-    .chapter:active{
-        color: #fff;
-        background-color: #008EE7;
-        transition: all 0.05s;
-    }
-
-    .page{
-        width: 80%;
-        padding: 20px;
-        border-radius: 14px;
-        background-color: #fff;
-        box-sizing: border-box;
-    }
-
-    .note{
-        width: 100%;
-        padding: 20px;
-        border-radius: 10px;
-        box-sizing: border-box;
-        font-size: 16px;
-        background-color: #f5f5f5;
-    }
-
-    .dropdown-menu{
-        background-color: #fff;
-        padding: 10px;
-        border-radius: 10px;
-        box-sizing: border-box;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        z-index: 1923123;
-    }
-
-    .example-button{
-        width: fit-content;
-        height: 40px;
-        background: #f8f8f8;
-        outline: 1px solid #D6D6D6;
-        border-radius: 20px;
-        padding: 12px;
-        box-sizing: border-box;
-        font-size: 16px;
-        font-weight: bold;
-        transition: all 0.2s;
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-
-    .example-button:hover{
-        cursor: pointer;
-        color: #fff;
-        background: #0094FF;
-        transition: all 0.2s;
-    }
-
-    pre{
-        width: 100%;
-        padding: 20px;
-        border-radius: 10px;
-        box-sizing: border-box;
-        font-size: 16px;
-        color: rgba(255, 255, 255, 0.5);
-        background-color: #1E1E1E;
-    }
-
-    pre code{
-        font-size: 16px;
-        color: rgba(255, 255, 255, 0.5);
-        font-weight: 300;
-    }
-
-    code{
-        font-size: 16px;
-        color: #000;
-        font-weight: bold;
-    }
-
-    .main{
-        color: #358CD6;
-    }
-
-    .secondary{
-        color: #9CDCF0;
-    }
-
-    .value{
-        color: #CE9178;
-    }
-
-    .thirdary{
-        color: #fffb00;
-    }
-
-    .string{
-        color: rgb(229, 229, 229);
-    }
-</style>
-<script src="dropdown.js"></script>
 </html>
